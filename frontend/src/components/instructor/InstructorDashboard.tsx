@@ -167,7 +167,7 @@ export const InstructorDashboard: React.FC = () => {
                                 <MessageSquare className="w-3.5 h-3.5 text-blue-600 mt-0.5 flex-shrink-0" />
                                 <div>
                                   <span className="font-bold text-[10px] uppercase text-blue-700">โน้ตจากนักศึกษา:</span>{' '}
-                                  <span className="italic">"{sub.studentNote}"</span>
+                                  <span className="note">"{sub.studentNote}"</span>
                                 </div>
                               </div>
                             )}
@@ -178,7 +178,7 @@ export const InstructorDashboard: React.FC = () => {
                                 <MessageSquare className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
                                 <div>
                                   <span className="font-bold text-[10px] uppercase text-emerald-700">ข้อเสนอแนะที่ให้ไว้:</span>{' '}
-                                  <span className="italic">"{sub.instructorNote}"</span>
+                                  <span className="note">"{sub.instructorNote}"</span>
                                 </div>
                               </div>
                             )}
