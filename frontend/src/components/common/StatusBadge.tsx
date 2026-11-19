@@ -60,8 +60,8 @@ export const CategoryBadge: React.FC<{ category: AssignmentCategory }> = ({ cate
       );
     case 'quiz':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200/80">
-          <HelpCircle className="w-3 h-3 text-blue-500" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-purple-50 text-purple-700 border border-purple-200/80">
+          <HelpCircle className="w-3 h-3 text-purple-500" />
           <span>แบบทดสอบ</span>
         </span>
       );

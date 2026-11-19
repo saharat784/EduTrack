@@ -106,10 +106,10 @@ export const AssignmentList: React.FC = () => {
         </div>
       </div>
 
-      {/* Assignment Cards Grid (Clean, Clickable Cards) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Assignment Rows (1 งานเป็น 1 โรล / 1 Row per Assignment with Original Layout) */}
+      <div className="flex flex-col gap-4">
         {filteredAssignments.length === 0 ? (
-          <div className="col-span-full bg-white p-8 rounded-xl border border-dashed border-slate-300 text-center text-slate-500">
+          <div className="bg-white p-8 rounded-xl border border-dashed border-slate-300 text-center text-slate-500">
             <p className="text-sm font-semibold">ไม่พบรายการงานที่ตรงกับคำค้นหา</p>
             <p className="text-xs text-slate-400 mt-1">ลองเปลี่ยนตัวกรอง หรือรีเซ็ตคำค้นหา</p>
           </div>
@@ -119,6 +119,44 @@ export const AssignmentList: React.FC = () => {
             const status: SubmissionStatus = sub ? sub.status : 'not_submitted';
             const dueDate = new Date(asg.dueDate);
             const isPastDue = new Date() > dueDate;
+
+            // Distinct banner colors for each category
+            const bannerConfig = {
+              assignment: {
+                bg: 'bg-blue-50/70',
+                border: 'border-blue-200/90 hover:border-blue-400',
+                divider: 'border-blue-100',
+                textHover: 'group-hover:text-blue-700',
+                actionText: 'text-blue-600',
+              },
+              quiz: {
+                bg: 'bg-purple-50/70',
+                border: 'border-purple-200/90 hover:border-purple-400',
+                divider: 'border-purple-100',
+                textHover: 'group-hover:text-purple-700',
+                actionText: 'text-purple-600',
+              },
+              exam: {
+                bg: 'bg-rose-50/70',
+                border: 'border-rose-200/90 hover:border-rose-400',
+                divider: 'border-rose-100',
+                textHover: 'group-hover:text-rose-700',
+                actionText: 'text-rose-600',
+              },
+              project: {
+                bg: 'bg-amber-50/70',
+                border: 'border-amber-200/90 hover:border-amber-400',
+                divider: 'border-amber-100',
+                textHover: 'group-hover:text-amber-800',
+                actionText: 'text-amber-700',
+              },
+            }[asg.category] || {
+              bg: 'bg-white',
+              border: 'border-slate-200 hover:border-blue-300',
+              divider: 'border-slate-100',
+              textHover: 'group-hover:text-blue-600',
+              actionText: 'text-blue-600',
+            };
 
             return (
               <div
@@ -132,7 +170,7 @@ export const AssignmentList: React.FC = () => {
                     setSelectedAssignment(asg);
                   }
                 }}
-                className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-blue-400 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex flex-col justify-between gap-4 group"
+                className={`${bannerConfig.bg} rounded-xl p-5 border ${bannerConfig.border} shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex flex-col justify-between gap-4 group`}
               >
                 {/* Header: Badges & Course Code */}
                 <div>
@@ -145,13 +183,13 @@ export const AssignmentList: React.FC = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                  <h3 className={`text-base font-bold text-slate-900 ${bannerConfig.textHover} transition-colors line-clamp-2`}>
                     {asg.title}
                   </h3>
                 </div>
 
                 {/* Footer with Due Date, Score & Click Indication */}
-                <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+                <div className={`flex items-center justify-between pt-3 border-t ${bannerConfig.divider} text-xs`}>
                   <div className="space-y-1">
                     <div className="flex items-center gap-1.5 text-slate-500">
                       <Calendar className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
@@ -187,7 +225,7 @@ export const AssignmentList: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:translate-x-0.5 transition-transform">
+                  <div className={`flex items-center gap-1 text-xs font-semibold ${bannerConfig.actionText} group-hover:translate-x-0.5 transition-transform`}>
                     <span>
                       {status === 'graded'
                         ? 'ดูผลคะแนน'

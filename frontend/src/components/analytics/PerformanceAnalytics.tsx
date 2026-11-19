@@ -47,17 +47,25 @@ export const PerformanceAnalytics: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {categories.map((cat) => {
           const pct = cat.maxScore > 0 ? (cat.earnedScore / cat.maxScore) * 100 : 0;
+          const colorMap: Record<string, { bar: string; text: string }> = {
+            assignment: { bar: 'bg-blue-600', text: 'text-blue-700' },
+            quiz: { bar: 'bg-purple-600', text: 'text-purple-700' },
+            exam: { bar: 'bg-rose-500', text: 'text-rose-700' },
+            project: { bar: 'bg-amber-500', text: 'text-amber-800' },
+          };
+          const colors = colorMap[cat.key] || { bar: 'bg-blue-600', text: 'text-blue-700' };
+
           return (
             <div key={cat.key} className="bg-slate-50/70 p-3.5 rounded-xl border border-slate-200/60">
               <div className="flex items-center justify-between text-xs mb-1.5">
                 <span className="font-bold text-slate-800">{cat.label}</span>
-                <span className="font-extrabold text-blue-700">
+                <span className={`font-extrabold ${colors.text}`}>
                   {cat.earnedScore.toFixed(1)} / {cat.maxScore} ({pct.toFixed(0)}%)
                 </span>
               </div>
               <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
                 <div
-                  className="bg-blue-600 h-2 rounded-full transition-all duration-500"
+                  className={`${colors.bar} h-2 rounded-full transition-all duration-500`}
                   style={{ width: `${Math.min(pct, 100)}%` }}
                 />
               </div>
@@ -90,13 +98,13 @@ export const PerformanceAnalytics: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-3 bg-blue-50/70 rounded-xl border border-blue-100 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+        <div className="p-3 bg-purple-50/70 rounded-xl border border-purple-100 flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
             <Award className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-[11px] font-semibold text-blue-800 block">เกรดเฉลี่ยสะสมคาดการณ์</span>
-            <span className="text-lg font-black text-blue-900">
+            <span className="text-[11px] font-semibold text-purple-800 block">เกรดเฉลี่ยสะสมคาดการณ์</span>
+            <span className="text-lg font-black text-purple-900">
               เกรด {stats.predictedGrade.grade} | GPA {stats.predictedGrade.gpaPoint.toFixed(1)}
             </span>
           </div>

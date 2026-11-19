@@ -118,14 +118,43 @@ export const InstructorDashboard: React.FC = () => {
                 const status = sub?.status || 'not_submitted';
                 const dueDate = new Date(asg.dueDate);
 
+                // Distinct banner colors for each category (matching student side)
+                const bannerConfig = {
+                  assignment: {
+                    bg: 'bg-blue-50/70',
+                    border: 'border-blue-200/90 hover:border-blue-400',
+                    divider: 'border-blue-100',
+                    btnGrading: 'bg-blue-600 text-white hover:bg-blue-700',
+                  },
+                  quiz: {
+                    bg: 'bg-purple-50/70',
+                    border: 'border-purple-200/90 hover:border-purple-400',
+                    divider: 'border-purple-100',
+                    btnGrading: 'bg-purple-600 text-white hover:bg-purple-700',
+                  },
+                  exam: {
+                    bg: 'bg-rose-50/70',
+                    border: 'border-rose-200/90 hover:border-rose-400',
+                    divider: 'border-rose-100',
+                    btnGrading: 'bg-rose-600 text-white hover:bg-rose-700',
+                  },
+                  project: {
+                    bg: 'bg-amber-50/70',
+                    border: 'border-amber-200/90 hover:border-amber-400',
+                    divider: 'border-amber-100',
+                    btnGrading: 'bg-amber-600 text-white hover:bg-amber-700',
+                  },
+                }[asg.category] || {
+                  bg: 'bg-white',
+                  border: 'border-slate-200/80 hover:border-slate-300',
+                  divider: 'border-slate-100',
+                  btnGrading: 'bg-blue-600 text-white hover:bg-blue-700',
+                };
+
                 return (
                   <div
                     key={asg.id}
-                    className={`p-4 rounded-xl border transition-all ${
-                      status === 'submitted' || status === 'late'
-                        ? 'border-blue-300 bg-blue-50/20 shadow-xs'
-                        : 'border-slate-200/80 bg-white'
-                    }`}
+                    className={`${bannerConfig.bg} p-4 sm:p-5 rounded-xl border ${bannerConfig.border} transition-all shadow-xs hover:shadow-md hover:-translate-y-0.5`}
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <div className="flex-1">
@@ -163,7 +192,7 @@ export const InstructorDashboard: React.FC = () => {
 
                             {/* Show student reflection note snippet */}
                             {sub.studentNote && (
-                              <div className="bg-blue-50/60 border border-blue-100 p-2 rounded-lg text-blue-900 text-xs flex items-start gap-1.5 mt-1">
+                              <div className="bg-white/80 border border-blue-100 p-2 rounded-lg text-blue-900 text-xs flex items-start gap-1.5 mt-1">
                                 <MessageSquare className="w-3.5 h-3.5 text-blue-600 mt-0.5 flex-shrink-0" />
                                 <div>
                                   <span className="font-bold text-[10px] uppercase text-blue-700">โน้ตจากนักศึกษา:</span>{' '}
@@ -174,7 +203,7 @@ export const InstructorDashboard: React.FC = () => {
 
                             {/* Show instructor note snippet if graded */}
                             {sub.instructorNote && (
-                              <div className="bg-emerald-50/60 border border-emerald-100 p-2 rounded-lg text-emerald-900 text-xs flex items-start gap-1.5 mt-1">
+                              <div className="bg-emerald-50/80 border border-emerald-100 p-2 rounded-lg text-emerald-900 text-xs flex items-start gap-1.5 mt-1">
                                 <MessageSquare className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
                                 <div>
                                   <span className="font-bold text-[10px] uppercase text-emerald-700">ข้อเสนอแนะที่ให้ไว้:</span>{' '}
@@ -187,7 +216,7 @@ export const InstructorDashboard: React.FC = () => {
                       </div>
 
                       {/* Right side: Score & Action button */}
-                      <div className="flex sm:flex-col items-center sm:items-end justify-between gap-2 border-t sm:border-t-0 pt-2 sm:pt-0 border-slate-100">
+                      <div className={`flex sm:flex-col items-center sm:items-end justify-between gap-2 border-t sm:border-t-0 pt-2 sm:pt-0 ${bannerConfig.divider}`}>
                         <div className="text-right">
                           <span className="text-[10px] text-slate-400 block">คะแนน</span>
                           <span className="text-base font-extrabold text-slate-900">
@@ -207,8 +236,8 @@ export const InstructorDashboard: React.FC = () => {
                             status === 'not_submitted'
                               ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
                               : status === 'graded'
-                              ? 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                              : 'bg-blue-600 text-white hover:bg-blue-700 shadow-xs'
+                              ? 'bg-white/80 text-slate-700 hover:bg-white border border-slate-200/80 shadow-2xs'
+                              : `${bannerConfig.btnGrading} shadow-xs`
                           }`}
                         >
                           <span>{status === 'graded' ? 'แก้ไขคะแนน' : 'ตรวจงาน'}</span>
