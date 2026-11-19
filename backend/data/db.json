@@ -28,6 +28,18 @@
   },
   "assignments": [
     {
+      "title": "Lab8",
+      "description": "ไม่มี",
+      "category": "assignment",
+      "dueDate": "2026-11-26T16:59:00.000Z",
+      "maxScore": 15,
+      "weightPercentage": 15,
+      "courseCode": "CPE342",
+      "courseName": "สถาปัตยกรรมเว็บแอปพลิเคชันและวิศวกรรมคลาวด์",
+      "id": "asg-mwnr0zof",
+      "createdAt": "2026-11-19T16:12:42.783Z"
+    },
+    {
       "id": "asg-01",
       "title": "Lab 1: RESTful API Design & Database Modeling",
       "description": "ออกแบบ ER-Diagram และพัฒนา REST API ด้วย Node.js และ TypeScript รองรับ CRUD operations พร้อม Data Validation และ Authentication JWT",
@@ -150,6 +162,20 @@
     "asg-05": {
       "id": "sub-05",
       "assignmentId": "asg-05",
+      "studentId": "std-saharath-01",
+      "submittedAt": null,
+      "status": "not_submitted",
+      "workType": "link",
+      "workContent": "",
+      "studentNote": "",
+      "score": null,
+      "instructorNote": "",
+      "gradedAt": null,
+      "gradedBy": null
+    },
+    "asg-mwnr0zof": {
+      "id": "sub-1795104762783",
+      "assignmentId": "asg-mwnr0zof",
       "studentId": "std-saharath-01",
       "submittedAt": null,
       "status": "not_submitted",

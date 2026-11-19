@@ -6,7 +6,6 @@ import { GradingModal } from './GradingModal';
 import { AssignmentManager } from './AssignmentManager';
 import { StudentGradeReport } from './StudentGradeReport';
 import {
-  Award,
   FileCheck,
   Layers,
   MessageSquare,
@@ -21,7 +20,7 @@ export const InstructorDashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Instructor Welcome Banner */}
-      <div className="bg-gradient-to-r bg-blue-900 text-white rounded-2xl p-6 shadow-xs relative overflow-hidden">
+      <div className="bg-gradient-to-r bg-blue-700 text-white rounded-2xl p-6 shadow-xs relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
@@ -43,12 +42,12 @@ export const InstructorDashboard: React.FC = () => {
           {/* Quick Metrics */}
           <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-3 rounded-xl border border-white/10">
             <div className="text-center px-3 border-r border-white/10">
-              <span className="text-[10px] uppercase font-bold text-white-300 block">รอตรวจ</span>
+              <span className="text-[10px] uppercase font-bold text-white block">รอตรวจ</span>
               <span className="text-2xl font-black text-amber-500">{stats.pendingGradingCount}</span>
             </div>
             <div className="text-center px-3">
-              <span className="text-[10px] uppercase font-bold text-white-300 block">ตรวจแล้ว</span>
-              <span className="text-2xl font-black text-emerald-500">{stats.gradedCount}</span>
+              <span className="text-[10px] uppercase font-bold  block">ตรวจแล้ว</span>
+              <span className="text-2xl font-black text-green-500">{stats.gradedCount}</span>
             </div>
           </div>
         </div>
@@ -64,7 +63,7 @@ export const InstructorDashboard: React.FC = () => {
               : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
           }`}
         >
-          <Award className="w-4 h-4" />
+          <FileCheck className="w-4 h-4" />
           <span>ศูนย์ตรวจงานและให้คะแนน</span>
           {stats.pendingGradingCount > 0 && (
             <span className="px-1.5 py-0.2 bg-amber-400 text-slate-900 text-[10px] font-extrabold rounded-full">
@@ -176,7 +175,7 @@ export const InstructorDashboard: React.FC = () => {
                             {/* Show instructor note snippet if graded */}
                             {sub.instructorNote && (
                               <div className="bg-emerald-50/60 border border-emerald-100 p-2 rounded-lg text-emerald-900 text-xs flex items-start gap-1.5 mt-1">
-                                <Award className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                                <MessageSquare className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
                                 <div>
                                   <span className="font-bold text-[10px] uppercase text-emerald-700">ข้อเสนอแนะที่ให้ไว้:</span>{' '}
                                   <span className="italic">"{sub.instructorNote}"</span>
@@ -204,7 +203,7 @@ export const InstructorDashboard: React.FC = () => {
                         <button
                           onClick={() => setGradingAssignment(asg)}
                           disabled={status === 'not_submitted'}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center transition-colors ${
                             status === 'not_submitted'
                               ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
                               : status === 'graded'
@@ -212,7 +211,6 @@ export const InstructorDashboard: React.FC = () => {
                               : 'bg-blue-600 text-white hover:bg-blue-700 shadow-xs'
                           }`}
                         >
-                          <Award className="w-3.5 h-3.5" />
                           <span>{status === 'graded' ? 'แก้ไขคะแนน' : 'ตรวจงาน'}</span>
                         </button>
                       </div>

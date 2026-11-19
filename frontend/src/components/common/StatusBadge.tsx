@@ -1,6 +1,6 @@
 import React from 'react';
 import { SubmissionStatus, AssignmentCategory } from '../../types';
-import { Award, Clock, AlertCircle, FileText, HelpCircle, BookOpen, Layers } from 'lucide-react';
+import { CheckCircle, Clock, AlertCircle, FileText, HelpCircle, BookOpen, Layers } from 'lucide-react';
 
 export const StatusBadge: React.FC<{ status: SubmissionStatus; size?: 'sm' | 'md' }> = ({
   status,
@@ -14,7 +14,7 @@ export const StatusBadge: React.FC<{ status: SubmissionStatus; size?: 'sm' | 'md
         <span
           className={`inline-flex items-center gap-1.5 rounded-full font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/80 ${sizeClasses}`}
         >
-          <Award className="w-3.5 h-3.5 text-emerald-600" />
+          <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
           <span>ตรวจแล้ว</span>
         </span>
       );

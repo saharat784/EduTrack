@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { Award, BookOpen, CheckCircle2 } from 'lucide-react';
+import { BookOpen, CheckCircle2 } from 'lucide-react';
 
 export const StudentProfileCard: React.FC = () => {
   const { student, course, stats } = useApp();

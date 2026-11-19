@@ -97,7 +97,7 @@ export const PerformanceAnalytics: React.FC = () => {
           <div>
             <span className="text-[11px] font-semibold text-blue-800 block">เกรดเฉลี่ยสะสมคาดการณ์</span>
             <span className="text-lg font-black text-blue-900">
-              เกรด {stats.predictedGrade.grade} • GPA {stats.predictedGrade.gpaPoint.toFixed(1)}
+              เกรด {stats.predictedGrade.grade} | GPA {stats.predictedGrade.gpaPoint.toFixed(1)}
             </span>
           </div>
         </div>

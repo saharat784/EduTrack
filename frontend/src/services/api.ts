@@ -1,7 +1,7 @@
 import { StudentProfile, InstructorProfile, CourseSummary, Assignment, Submission } from '../types';
 import { storageService } from './storageService';
 
-const API_BASE = '/api';
+const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined)?.replace(/\/+$/, '') || '/api';
 
 export const apiService = {
   // Check if backend is available

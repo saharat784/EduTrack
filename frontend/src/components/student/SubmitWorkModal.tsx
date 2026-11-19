@@ -9,7 +9,6 @@ import {
   AlertCircle,
   CheckCircle,
   ExternalLink,
-  Award,
   FileText,
   Calendar,
   Send,
@@ -116,7 +115,6 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
             </div>
 
             <div className="flex items-center gap-1.5">
-              <Award className="w-3.5 h-3.5 text-blue-500" />
               <span>
                 คะแนนเต็ม: <strong className="text-slate-900">{assignment.maxScore}</strong>
               </span>
@@ -139,7 +137,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
         {isGraded && currentSubmission && (
           <div className="space-y-1.5">
             <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
-              <Award className="w-3.5 h-3.5 text-emerald-600" />
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
               <span>ผลการตรวจและคำแนะนำจากอาจารย์</span>
             </h4>
             <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4 space-y-3">

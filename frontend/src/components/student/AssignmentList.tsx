@@ -3,7 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { Assignment, SubmissionStatus } from '../../types';
 import { StatusBadge, CategoryBadge } from '../common/StatusBadge';
 import { SubmitWorkModal } from './SubmitWorkModal';
-import { Search, Calendar, Award, ChevronRight } from 'lucide-react';
+import { Search, Calendar, ChevronRight } from 'lucide-react';
 
 export const AssignmentList: React.FC = () => {
   const { assignments, submissions } = useApp();
@@ -174,7 +174,6 @@ export const AssignmentList: React.FC = () => {
                     </div>
 
                     <div className="flex items-center gap-1.5 text-slate-500">
-                      <Award className="w-3.5 h-3.5 text-blue-500 flex-shrink-0" />
                       <span>
                         คะแนน:{' '}
                         {status === 'graded' ? (

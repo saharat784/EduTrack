@@ -95,14 +95,6 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Role Indicator Banner */}
-      <div className="py-1.5 px-4 text-xs font-medium flex items-center justify-center gap-2 bg-blue-50/70 text-blue-800 border-b border-blue-100">
-        <Sparkles className="w-3.5 h-3.5" />
-        <span>
-          มุมมองปัจจุบัน: <strong>{role === 'student' ? student.fullName : instructor.fullName}</strong>
-        </span>
-      </div>
-
       {/* Confirmation Modal for Reset */}
       {showResetConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">

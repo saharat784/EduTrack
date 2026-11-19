@@ -3,7 +3,7 @@ import { Assignment, Submission } from '../../types';
 import { Modal } from '../common/Modal';
 import { StatusBadge, CategoryBadge } from '../common/StatusBadge';
 import { useApp } from '../../context/AppContext';
-import { Award, MessageSquare, ExternalLink, AlertCircle, CheckCircle, User } from 'lucide-react';
+import { MessageSquare, ExternalLink, AlertCircle, CheckCircle, User } from 'lucide-react';
 
 interface GradingModalProps {
   isOpen: boolean;
@@ -156,7 +156,7 @@ export const GradingModal: React.FC<GradingModalProps> = ({
         <form onSubmit={handleSaveGrade} className="space-y-4">
           <div className="bg-blue-50/40 border border-blue-200/80 rounded-xl p-4 space-y-4">
             <h5 className="font-bold text-blue-900 text-sm flex items-center gap-1.5">
-              <Award className="w-4 h-4 text-blue-600" />
+              <CheckCircle className="w-4 h-4 text-blue-600" />
               การประเมินและให้คะแนนโดยอาจารย์
             </h5>
 

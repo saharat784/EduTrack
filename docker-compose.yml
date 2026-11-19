@@ -1,0 +1,15 @@
+services:
+  edutrack:
+    build: .
+    container_name: edutrack-app
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+    volumes:
+      - edutrack-data:/app/backend/data
+    restart: unless-stopped
+
+volumes:
+  edutrack-data:

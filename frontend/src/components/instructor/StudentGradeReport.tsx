@@ -1,7 +1,7 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { StatusBadge, CategoryBadge } from '../common/StatusBadge';
-import { Printer, MessageSquare, Award } from 'lucide-react';
+import { Printer, MessageSquare, CheckCircle } from 'lucide-react';
 
 export const StudentGradeReport: React.FC = () => {
   const { student, course, assignments, submissions, stats, instructor } = useApp();
@@ -49,11 +49,11 @@ export const StudentGradeReport: React.FC = () => {
             </div>
 
             {/* Final Calculated Grade Box */}
-            <div className="bg-slate-900 text-white p-4 rounded-xl text-center min-w-[140px] shadow-sm">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+            <div className="bg-blue-600 text-white p-4 rounded-xl text-center min-w-[140px] shadow-sm">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-300 block">
                 เกรดรวมสุทธิ
               </span>
-              <span className="text-3xl font-black text-amber-400">
+              <span className="text-3xl font-black text-white">
                 {stats.predictedGrade.grade}
               </span>
               <span className="text-xs text-slate-300 block mt-0.5">
@@ -149,7 +149,7 @@ export const StudentGradeReport: React.FC = () => {
 
                           {sub.instructorNote && (
                             <div className="flex items-start gap-2 text-emerald-900 bg-emerald-50/80 p-2 rounded-md border border-emerald-100">
-                              <Award className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                              <CheckCircle className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
                               <div>
                                 <span className="font-bold text-[10px] uppercase tracking-wide text-emerald-700">
                                   ข้อเสนอแนะจากอาจารย์:

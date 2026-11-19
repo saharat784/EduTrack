@@ -81,6 +81,42 @@ npm run dev
 npm run build
 ```
 
+### 4. รัน Production Server (Fullstack Monolith)
+```bash
+npm start
+```
+
+---
+
+## 🚀 Deployment Guide (แนวทางการ Deploy ขึ้น Cloud)
+
+โปรเจกต์นี้รองรับการ Deploy ทั้งแบบ **แยก Frontend / Backend** และแบบ **รวมบริการเดี่ยว (Fullstack Container/Monolith)**:
+
+### ตัวเลือกที่ 1: Deploy บน Vercel (Frontend) + Render / Railway (Backend)
+1. **Backend (Render / Railway / Fly.io)**:
+   - Root Directory: `.`
+   - Build Command: `npm install && npm run build:backend`
+   - Start Command: `npm run start:backend`
+   - ได้ URL เช่น `https://edutrack-api.onrender.com`
+2. **Frontend (Vercel)**:
+   - Framework Preset: `Vite`
+   - Root Directory: `frontend` (หรือตั้งที่ root โดยไฟล์ `vercel.json` จัดการให้เรียบร้อย)
+   - Environment Variables:
+     - `VITE_API_BASE`: `https://edutrack-api.onrender.com/api`
+
+### ตัวเลือกที่ 2: Deploy เป็น Fullstack Monolith บน Render / Railway / Cloud VPS
+- เนื่องจาก Backend ในโหมด Production ถูกตั้งค่าให้ Serve Static Assets จาก `frontend/dist` อัตโนมัติ:
+- Build Command: `npm install && npm run build`
+- Start Command: `npm start`
+- รันได้ครบทั้งหน้าเว็บ React SPA และ Express REST API บนพอร์ตและ Domain เดียวกัน
+
+### ตัวเลือกที่ 3: Docker & Docker Compose
+```bash
+# รันผ่าน Docker Compose
+docker compose up -d --build
+```
+ระบบจะรันบนพอร์ต `5000` พร้อมผูก Volume ข้อมูล `backend/data/db.json` ป้องกันข้อมูลสูญหายเมื่อรีสตาร์ท
+
 ---
 
 ## 📡 RESTful API Endpoints Specification (Backend)
