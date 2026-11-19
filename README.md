@@ -6,121 +6,112 @@
 
 ---
 
-## 📌 Executive Summary & Project Overview
+## 🏗️ Clean Fullstack Architecture (แยก Frontend และ Backend ชัดเจน)
 
-**EduTrack** เป็นระบบเว็บแอปพลิเคชัน Fullstack ที่พัฒนาขึ้นตามโจทย์ **Option 4: Student Performance Tracking System** เพื่อเป็นเครื่องมือสำหรับนักศึกษาและอาจารย์ในการติดตามและประเมินผลการเรียนรู้ การส่งงาน ตลอดจนการสอบต่างๆ อย่างเป็นรูปธรรม
+โปรเจกต์นี้ได้รับการออกแบบและจัดโครงสร้างแยกฝั่ง **Frontend (Client)** และ **Backend (Server)** ออกจากกันอย่างเป็นระเบียบตามมาตรฐาน Fullstack Application Development:
 
-ระบบถูกออกแบบให้รองรับ **Dual-Role Interaction** อย่างสมบูรณ์ โดยมีจุดเด่นคือ:
-1. **Student Profile & Status Tracking**: แสดงข้อมูลนักศึกษา (ชั้นปีที่ 3 วิศวกรรมคอมพิวเตอร์), งานมอบหมาย, วันกำหนดส่ง (Due Date), สถานะการส่งงาน (`ยังไม่ส่ง`, `รอตรวจ`, `ส่งล่าช้า`, `ตรวจแล้ว`)
-2. **Bilateral Evaluation Notes (โน้ต 2 ฝั่ง)**:
-   - 👨‍🎓 **โน้ตฝั่งนักศึกษา (Student Reflection Note)**: สำหรับบันทึกแนวคิด ปัญหาที่พบ หรือข้อคำถาม
-   - 👨‍🏫 **โน้ตฝั่งอาจารย์ (Instructor Feedback Note)**: ข้อเสนอแนะ จุดเด่น และสิ่งที่ควรพัฒนาต่อยอด
-3. **Automated Grade Projection**: คำนวณตัดเกรดอิงเกณฑ์มาตรฐาน (A, B+, B, C+, C, D+, D, F) และ GPA คาดการณ์อัตโนมัติ
-4. **Performance & Punctuality Analytics**: วิเคราะห์อัตราการส่งงานตรงเวลา (On-time Rate) และสัดส่วนคะแนนสะสมแยกตามหมวดหมู่
-5. **Instant Evaluator Role Switcher**: ปุ่มสลับโหมด Student ⇄ Instructor ในคลิกเดียว พร้อมปุ่ม "Reset Demo Data" ช่วยให้กรรมการผู้ประเมินสามารถทดสอบระบบได้อย่างสะดวก รวดเร็ว และลื่นไหลที่สุด
-
----
-
-## 🛠️ Tech Stack & Architecture
-
-- **Frontend & UI**:
-  - **React 18** + **TypeScript** (Strongly Typed Contracts)
-  - **Vite** (Next-generation lightning fast build tool)
-  - **Tailwind CSS** (Modern utility-first styling)
-  - **Lucide React** (Clean, consistent modern icons)
-- **State & Data Persistence**:
-  - **React Context API** (Reactive Global Store across roles)
-  - **Structured LocalStorage Engine** with Auto-sync & JSON Export
-- **Deployment Platform**:
-  - **Vercel** / Static Cloud Edge Hosting
-
-```mermaid
-flowchart LR
-    subgraph Client ["Client Browser (Responsive Web)"]
-        UI["Modern UI / Tailwind CSS"]
-        Ctx["AppContext Store"]
-    end
-
-    subgraph Roles ["Role Engine"]
-        S["Student Portal<br>(Saharath Wiangkaew)"]
-        T["Instructor Portal<br>(Dr. Vanness Plus)"]
-    end
-
-    subgraph Storage ["Persistent Layer"]
-        LS[("LocalStorage Engine<br>+ JSON Importer/Exporter")]
-    end
-
-    UI --> Ctx
-    Ctx <--> S
-    Ctx <--> T
-    Ctx <--> LS
+```
+d:\vanness-test\
+├── backend/                         # 🖥️ Node.js + Express REST API Server
+│   ├── package.json
+│   ├── tsconfig.json
+│   ├── data/
+│   │   └── db.json                  # Persistent JSON Database Engine
+│   └── src/
+│       ├── server.ts                # Express App & Middleware (CORS, Logger, Port 5000)
+│       ├── routes/
+│       │   └── api.ts               # RESTful Endpoints (Students, Assignments, Submissions, Grades)
+│       ├── data/
+│       │   ├── db.ts                # Data Access Layer & CRUD Engine
+│       │   └── initialData.ts       # Realistic Seed Data for Saharath Wiangkaew
+│       └── types/
+│           └── index.ts             # Backend Type Definitions
+│
+├── frontend/                        # 🌐 React 18 + Vite + TypeScript Client
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.ts               # Vite Config with /api Reverse Proxy to Port 5000
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
+│   └── src/
+│       ├── types/                   # Frontend Data Contracts
+│       ├── services/
+│       │   ├── api.ts               # REST API Client with Offline/Storage Fallback
+│       │   └── storageService.ts    # Client-side Cache & LocalStorage
+│       ├── context/
+│       │   └── AppContext.tsx       # Global State, Real-time Sync & Dual-Role Engine
+│       ├── components/
+│       │   ├── common/              # Navbar (with Backend Status Pill), Badges, Modals
+│       │   ├── student/             # Student Profile, Assignment List, Submit Work Modal
+│       │   ├── instructor/          # Grading Center, Grade Report, Assignment Manager
+│       │   └── analytics/           # Category Progress, On-time Rate & GPA Analytics
+│       ├── App.tsx
+│       └── main.tsx
+│
+├── docs/
+│   ├── PRESENTATION_OUTLINE.md      # โครงสร้างสไลด์นำเสนอ (PDF/PPTX)
+│   └── VIDEO_DEMO_SCRIPT.md         # สคริปต์พูดคลิปวิดีโอเดโม (3-5 นาที)
+│
+├── README.md                        # เอกสารสถาปัตยกรรมและคู่มือการรัน
+└── package.json                     # Root Orchestrator (รันทั้งคู่พร้อมกันด้วยคำสั่งเดียว)
 ```
 
 ---
 
-## 🚀 Key Features
+## ⚡ Quick Start (วิธีรันระบบ)
 
-| หมวดหมู่ | ฟีเจอร์หลัก | รายละเอียด |
+### 1. ติดตั้ง Dependencies ทั้งหมด
+```bash
+npm run install:all
+```
+
+### 2. สั่งรันทั้ง Backend และ Frontend พร้อมกัน (1 คำสั่งจบ)
+```bash
+npm run dev
+```
+- **Backend API**: รันที่ `http://localhost:5000` (Health check: `http://localhost:5000/api/health`)
+- **Frontend App**: รันที่ `http://localhost:5173`
+
+*(หรือหากต้องการรันแยกหน้าต่าง)*:
+- ฝั่ง Backend: `npm run dev:backend`
+- ฝั่ง Frontend: `npm run dev:frontend`
+
+### 3. Build สำหรับ Production
+```bash
+npm run build
+```
+
+---
+
+## 📡 RESTful API Endpoints Specification (Backend)
+
+| Method | Endpoint | คำอธิบาย |
 |---|---|---|
-| **1. Student Information** | • ข้อมูลนักศึกษาครบถ้วน | แสดงชื่อ-สกุล, รหัสนักศึกษา, ระดับชั้นปี (Year 3), สาขาวิชา, คณะ และวิชาที่ลงทะเบียน |
-| **2. Assignment Management** | • รายการงานและการสอบ | แยกประเภทงานชัดเจน: การบ้าน (Assignment), แบบทดสอบย่อย (Quiz), การสอบ (Exam), โครงงาน (Project) |
-| | • กำหนดเวลา (Due Dates) | แสดงวันที่และเวลากำหนดส่ง พร้อมระบบตรวจจับส่งล่าช้า (Late Submission) |
-| **3. Submission Flow** | • แนบผลงาน | รองรับการแนบลิงก์ (GitHub, Demo, Google Drive) หรือส่งข้อความรายงาน |
-| | • **โน้ตฝั่งนักศึกษา** | ช่องกรอก Reflection Note บันทึกแนวทางการแก้ปัญหาและสิ่งที่ได้เรียนรู้ |
-| **4. Instructor Evaluation** | • ศูนย์ตรวจงาน | ตรวจสอบงานที่ส่ง ตรวจสอบเวลาส่งเทียบ Due Date |
-| | • การให้คะแนน | กรอกคะแนนพร้อม Validation ป้องกันคะแนนเกิน Max Score |
-| | • **โน้ตฝั่งอาจารย์** | ให้ Feedback และข้อเสนอแนะแก่นักศึกษาเพื่อการพัฒนา |
-| **5. Grade & Report** | • ตัดเกรดอัตโนมัติ | คำนวณเกรด A, B+, B, C+, C, D+, D, F และ GPA อัตโนมัติ |
-| | • ใบบันทึกผลการเรียน | ตารางสรุปคะแนนพร้อมโน้ต 2 ฝั่ง รองรับการพิมพ์/เซฟ PDF (Print-ready) |
-| **6. Experience & Testing** | • 1-Click Role Switcher | สลับบทบาทระหว่างนักศึกษาและอาจารย์ได้ทันทีโดยไม่ต้อง Sign In ซ้ำ |
-| | • Reset Demo Data | กู้คืนข้อมูลตัวอย่างมาตรฐานของนายสหรัฐ เวียงแก้ว ได้ตลอดเวลา |
+| `GET` | `/api/health` | ตรวจสอบสถานะความพร้อมของ Backend Service |
+| `GET` | `/api/student` | ดึงข้อมูลโปรไฟล์นักศึกษา (นายสหรัฐ เวียงแก้ว) |
+| `GET` | `/api/instructor` | ดึงข้อมูลโปรไฟล์อาจารย์ผู้ประเมิน |
+| `GET` | `/api/course` | ดึงข้อมูลรายวิชาและรายละเอียดภาคเรียน |
+| `GET` | `/api/assignments` | ดึงรายการงานและการสอบทั้งหมด |
+| `POST` | `/api/assignments` | อาจารย์สร้างงาน/การสอบใหม่ |
+| `DELETE` | `/api/assignments/:id` | อาจารย์ลบงานมอบหมาย |
+| `GET` | `/api/submissions` | ดึงประวัติการส่งงาน คะแนน และโน้ตทั้งหมด |
+| `POST` | `/api/submissions/:assignmentId/submit` | นักศึกษาส่งงานพร้อมบันทึก **"โน้ตฝั่งนักศึกษา (Student Note)"** |
+| `POST` | `/api/submissions/:assignmentId/grade` | อาจารย์ประเมินคะแนนพร้อมบันทึก **"โน้ต/Feedback จากอาจารย์"** |
+| `POST` | `/api/reset` | รีเซ็ตข้อมูลทั้งหมดกลับสู่ค่าเริ่มต้น |
 
 ---
 
-## 💻 How to Run Locally
+## ✨ Key Features & Business Logic
 
-### Requirements
-- Node.js version 18.x or 20.x+
-- npm version 9.x+
-
-### Steps
-1. โคลนหรือเปิดโฟลเดอร์โปรเจกต์:
-   ```bash
-   cd d:\vanness-test
-   ```
-2. ติดตั้ง Dependencies:
-   ```bash
-   npm install
-   ```
-3. รัน Development Server:
-   ```bash
-   npm run dev
-   ```
-   เปิดเบราว์เซอร์ไปที่ `http://localhost:5173`
-
-4. ทดสอบ Build สำหรับ Production:
-   ```bash
-   npm run build
-   ```
-
----
-
-## 📋 คู่มือการทดสอบสำหรับผู้ประเมิน (Evaluator Quick Walkthrough)
-
-1. **เปิดเว็บแอปพลิเคชัน**: ระบบจะเริ่มต้นที่ **"มุมมองนักศึกษา (Student View)"** ของนายสหรัฐ เวียงแก้ว
-2. **ทดลองส่งงาน**:
-   - คลิกที่งาน *"Final Project: Enterprise Student Performance Tracking Platform"* ที่ยังไม่ได้ส่ง
-   - กรอกลิงก์ผลงาน GitHub และกรอก **"โน้ตจากนักศึกษา"** แล้วกดยืนยันการส่งงาน
-   - สังเกตสถานะจะเปลี่ยนเป็น **"รอตรวจ (Submitted)"**
-3. **สลับไปมุมมองอาจารย์**:
-   - คลิกปุ่ม **"มุมมองอาจารย์ (Instructor)"** บนแถบด้านบน
-   - สังเกตป้ายแจ้งเตือนงานที่รอตรวจ
-   - ไปที่แท็บ **"ศูนย์ตรวจงานและให้คะแนน (Grading Center)"** แล้วคลิก **"ตรวจงาน & ให้คะแนน"**
-   - อ่านผลงานและอ่าน **"โน้ตจากนักศึกษา"**
-   - กรอกคะแนน และพิมพ์ **"โน้ต/Feedback จากอาจารย์"** แล้วกดบันทึก
-4. **ดูผลการตัดเกรด**:
-   - คลิกแท็บ **"ใบบันทึกผลและตัดเกรด (Grade Evaluation Report)"** เพื่อดูการคำนวณเกรดและตารางโน้ตทั้ง 2 ฝั่งคู่กัน
-   - สลับกลับไปมุมมองนักศึกษา จะพบว่าคะแนนและเกรดได้รับการอัปเดตเรียบร้อย
+1. **Dual-Role Interaction (สลับบทบาทใน 1 คลิก)**:
+   - ผู้ประเมินสามารถสลับระหว่าง **"มุมมองนักศึกษา"** และ **"มุมมองอาจารย์"** ได้ทันทีโดยไม่ต้อง Sign In ซ้ำ
+2. **Bilateral Evaluation Notes (โน้ต 2 ฝั่ง ตามโจทย์)**:
+   - 👨‍🎓 **โน้ตฝั่งนักศึกษา**: บันทึกแนวคิด อุปสรรค และสิ่งที่ได้เรียนรู้ประกอบการส่งงาน
+   - 👨‍🏫 **โน้ตฝั่งอาจารย์**: ข้อเสนอแนะและจุดเด่นของงานเพื่อให้นักศึกษานำไปพัฒนาต่อ
+3. **Automated Grade Projection**:
+   - คำนวณตัดเกรดอิงเกณฑ์มาตรฐาน (A, B+, B, C+, C, D+, D, F) และ GPA คาดการณ์อัตโนมัติ
+4. **Resilient Architecture**:
+   - Frontend มีระบบตรวจจับสถานะ Backend อัตโนมัติ (แสดงป้าย Online/Offline บน Navbar) และมี Graceful Fallback ช่วยให้ระบบยังคงทำงานได้อย่างสมบูรณ์แบบไม่ว่าผู้ตรวจจะเปิดผ่าน Local Server หรือ Static Edge Deployment
 
 ---
 
@@ -136,4 +127,4 @@ Skill Test for Fullstack Developer Trainee_Saharath Wiangkaew/
 ```
 
 ---
-*จัดทำด้วยความมุ่งมั่นโดย นายสหรัฐ เวียงแก้ว (Saharath Wiangkaew) สำหรับการคัดเลือกตำแหน่ง Fullstack Developer Trainee ที่ บริษัท แวนเนส พลัส คอนซัลติ้ง จำกัด (Vanness Plus Consulting Co., Ltd.)*
+*จัดทำโดย นายสหรัฐ เวียงแก้ว (Saharath Wiangkaew) สำหรับการคัดเลือกตำแหน่ง Fullstack Developer Trainee ที่ บริษัท แวนเนส พลัส คอนซัลติ้ง จำกัด (Vanness Plus Consulting Co., Ltd.)*

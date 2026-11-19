@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { GraduationCap, RotateCcw, Download, Sparkles, Shield, User } from 'lucide-react';
+import { GraduationCap, RotateCcw, Download, Sparkles, Shield, User, Server } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
-  const { role, setRole, student, instructor, resetDemoData, exportJSON } = useApp();
+  const { role, setRole, student, instructor, resetDemoData, exportJSON, backendConnected } = useApp();
   const [showResetConfirm, setShowResetConfirm] = useState(false);
 
   const handleReset = () => {
@@ -25,6 +25,17 @@ export const Navbar: React.FC = () => {
                 <span className="font-extrabold text-slate-900 text-lg tracking-tight">EduTrack</span>
                 <span className="px-2 py-0.5 text-[10px] font-bold bg-indigo-100 text-indigo-700 rounded-full uppercase tracking-wider">
                   Vanness Skill Test
+                </span>
+                <span
+                  className={`hidden md:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold border ${
+                    backendConnected
+                      ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                      : 'bg-slate-100 text-slate-600 border-slate-200'
+                  }`}
+                  title={backendConnected ? 'Connected to Node.js / Express Backend' : 'Running in Offline / Browser Cache mode'}
+                >
+                  <Server className="w-2.5 h-2.5" />
+                  <span>{backendConnected ? 'Backend API: Online (Port 5000)' : 'Client Local Mode'}</span>
                 </span>
               </div>
               <p className="text-xs text-slate-500 hidden sm:block">
