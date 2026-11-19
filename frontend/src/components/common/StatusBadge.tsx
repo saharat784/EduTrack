@@ -12,7 +12,7 @@ export const StatusBadge: React.FC<{ status: SubmissionStatus; size?: 'sm' | 'md
     case 'graded':
       return (
         <span
-          className={`inline-flex items-center gap-1.5 rounded-full font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/70 ${sizeClasses}`}
+          className={`inline-flex items-center gap-1.5 rounded-full font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/80 ${sizeClasses}`}
         >
           <Award className="w-3.5 h-3.5 text-emerald-600" />
           <span>ตรวจแล้ว</span>
@@ -21,16 +21,16 @@ export const StatusBadge: React.FC<{ status: SubmissionStatus; size?: 'sm' | 'md
     case 'submitted':
       return (
         <span
-          className={`inline-flex items-center gap-1.5 rounded-full font-medium bg-indigo-50 text-indigo-700 border border-indigo-200/70 ${sizeClasses}`}
+          className={`inline-flex items-center gap-1.5 rounded-full font-medium bg-blue-50 text-blue-700 border border-blue-200/80 ${sizeClasses}`}
         >
-          <Clock className="w-3.5 h-3.5 text-indigo-600" />
+          <Clock className="w-3.5 h-3.5 text-blue-600" />
           <span>รอตรวจ</span>
         </span>
       );
     case 'late':
       return (
         <span
-          className={`inline-flex items-center gap-1.5 rounded-full font-medium bg-amber-50 text-amber-700 border border-amber-200/70 ${sizeClasses}`}
+          className={`inline-flex items-center gap-1.5 rounded-full font-medium bg-amber-50 text-amber-700 border border-amber-200/80 ${sizeClasses}`}
         >
           <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
           <span>ส่งล่าช้า</span>
@@ -53,29 +53,29 @@ export const CategoryBadge: React.FC<{ category: AssignmentCategory }> = ({ cate
   switch (category) {
     case 'assignment':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">
-          <FileText className="w-3 h-3 text-slate-500" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-200/80">
+          <FileText className="w-3 h-3 text-indigo-500" />
           <span>งานมอบหมาย</span>
         </span>
       );
     case 'quiz':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">
-          <HelpCircle className="w-3 h-3 text-slate-500" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200/80">
+          <HelpCircle className="w-3 h-3 text-blue-500" />
           <span>แบบทดสอบ</span>
         </span>
       );
     case 'exam':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">
-          <BookOpen className="w-3 h-3 text-slate-500" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-rose-50 text-rose-700 border border-rose-200/80">
+          <BookOpen className="w-3 h-3 text-rose-500" />
           <span>การสอบ</span>
         </span>
       );
     case 'project':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">
-          <Layers className="w-3 h-3 text-slate-500" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80">
+          <Layers className="w-3 h-3 text-amber-600" />
           <span>โครงงาน</span>
         </span>
       );

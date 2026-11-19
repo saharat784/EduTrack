@@ -83,7 +83,7 @@ export const GradingModal: React.FC<GradingModalProps> = ({
     >
       <div className="space-y-5">
         {/* Student & Assignment Header */}
-        <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
+        <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
             <CategoryBadge category={assignment.category} />
             <div className="flex items-center gap-2">
@@ -98,10 +98,10 @@ export const GradingModal: React.FC<GradingModalProps> = ({
         </div>
 
         {/* Student Submission Payload */}
-        <div className="border border-slate-200/80 rounded-xl p-3.5 bg-white space-y-3">
+        <div className="border border-slate-200 rounded-xl p-3.5 bg-white space-y-3">
           <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-100">
             <span className="font-bold text-slate-700 flex items-center gap-1.5">
-              <User className="w-3.5 h-3.5 text-slate-500" />
+              <User className="w-3.5 h-3.5 text-indigo-500" />
               ผลงานที่ส่งมอบ
             </span>
             <span className="text-slate-500">
@@ -135,12 +135,12 @@ export const GradingModal: React.FC<GradingModalProps> = ({
               </div>
 
               {/* Bilateral Notes: Student's Note */}
-              <div className="bg-slate-50 border border-slate-200 p-3 rounded-lg">
-                <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5 mb-1">
-                  <MessageSquare className="w-3.5 h-3.5 text-slate-500" />
+              <div className="bg-indigo-50/60 border border-indigo-100 rounded-lg p-3">
+                <span className="text-xs font-bold text-indigo-900 flex items-center gap-1.5 mb-1">
+                  <MessageSquare className="w-3.5 h-3.5 text-indigo-600" />
                   โน้ตจากนักศึกษา
                 </span>
-                <p className="text-xs text-slate-700 italic leading-relaxed">
+                <p className="text-xs text-indigo-950 italic leading-relaxed">
                   "{currentSubmission.studentNote || 'นักศึกษาไม่ได้ระบุข้อความเพิ่มเติม'}"
                 </p>
               </div>
@@ -152,11 +152,11 @@ export const GradingModal: React.FC<GradingModalProps> = ({
           )}
         </div>
 
-        {/* Instructor Evaluation Form (Harmonized Tone) */}
+        {/* Instructor Evaluation Form */}
         <form onSubmit={handleSaveGrade} className="space-y-4">
-          <div className="bg-slate-50/80 border border-slate-200 rounded-xl p-4 space-y-4">
-            <h5 className="font-bold text-slate-900 text-sm flex items-center gap-1.5">
-              <Award className="w-4 h-4 text-slate-600" />
+          <div className="bg-blue-50/40 border border-blue-200/80 rounded-xl p-4 space-y-4">
+            <h5 className="font-bold text-blue-900 text-sm flex items-center gap-1.5">
+              <Award className="w-4 h-4 text-blue-600" />
               การประเมินและให้คะแนนโดยอาจารย์
             </h5>
 
@@ -175,7 +175,7 @@ export const GradingModal: React.FC<GradingModalProps> = ({
                   placeholder={`0 - ${assignment.maxScore}`}
                   value={score}
                   onChange={(e) => setScore(e.target.value)}
-                  className="w-32 px-3 py-1.5 text-sm font-bold text-slate-900 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 bg-white"
+                  className="w-32 px-3 py-1.5 text-sm font-bold text-blue-900 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 bg-white"
                   required
                 />
                 <span className="text-xs text-slate-500">
@@ -195,7 +195,7 @@ export const GradingModal: React.FC<GradingModalProps> = ({
                 placeholder="ระบุข้อดี จุดเด่นของผลงาน หรือคำแนะนำเพิ่มเติม..."
                 value={instructorNote}
                 onChange={(e) => setInstructorNote(e.target.value)}
-                className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 bg-white"
+                className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 bg-white"
                 required
               />
             </div>
@@ -226,7 +226,7 @@ export const GradingModal: React.FC<GradingModalProps> = ({
             </button>
             <button
               type="submit"
-              className="px-5 py-2 text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white rounded-lg shadow-xs transition-colors"
+              className="px-5 py-2 text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-xs transition-colors"
             >
               บันทึกคะแนน
             </button>

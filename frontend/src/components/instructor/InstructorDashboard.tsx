@@ -20,47 +20,47 @@ export const InstructorDashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Instructor Welcome Banner (Harmonized Dark Slate Tone) */}
-      <div className="bg-slate-900 text-white rounded-2xl p-6 shadow-xs relative overflow-hidden border border-slate-800">
+      {/* Instructor Welcome Banner */}
+      <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white rounded-2xl p-6 shadow-xs relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-slate-800 text-slate-300 border border-slate-700 rounded-full">
+              <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-blue-500/30 text-blue-200 border border-blue-400/30 rounded-full">
                 ระบบอาจารย์
               </span>
-              <span className="text-xs text-slate-300">
+              <span className="text-xs text-blue-200">
                 {course.courseCode} {course.courseName}
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black mt-1">
               ยินดีต้อนรับ {instructor.fullName}
             </h2>
-            <p className="text-xs text-slate-400 mt-1">
-              กำลังประเมินนักศึกษา: <strong className="text-slate-200">{student.fullName} • {student.academicYear}</strong>
+            <p className="text-xs text-blue-200/80 mt-1">
+              กำลังประเมินนักศึกษา: <strong>{student.fullName} • {student.academicYear}</strong>
             </p>
           </div>
 
           {/* Quick Metrics */}
-          <div className="flex items-center gap-3 bg-slate-800/80 px-4 py-3 rounded-xl border border-slate-700/60">
-            <div className="text-center px-3 border-r border-slate-700">
-              <span className="text-[10px] uppercase font-semibold text-slate-400 block">รอตรวจ</span>
-              <span className="text-2xl font-black text-amber-400">{stats.pendingGradingCount}</span>
+          <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-3 rounded-xl border border-white/10">
+            <div className="text-center px-3 border-r border-white/10">
+              <span className="text-[10px] uppercase font-bold text-blue-200 block">รอตรวจ</span>
+              <span className="text-2xl font-black text-amber-300">{stats.pendingGradingCount}</span>
             </div>
             <div className="text-center px-3">
-              <span className="text-[10px] uppercase font-semibold text-slate-400 block">ตรวจแล้ว</span>
-              <span className="text-2xl font-black text-emerald-400">{stats.gradedCount}</span>
+              <span className="text-[10px] uppercase font-bold text-blue-200 block">ตรวจแล้ว</span>
+              <span className="text-2xl font-black text-emerald-300">{stats.gradedCount}</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Tabs Navigation (Cohesive Slate Palette) */}
+      {/* Tabs Navigation */}
       <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
         <button
           onClick={() => setActiveTab('grading')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
             activeTab === 'grading'
-              ? 'bg-slate-900 text-white shadow-xs'
+              ? 'bg-blue-600 text-white shadow-xs'
               : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
           }`}
         >
@@ -75,9 +75,9 @@ export const InstructorDashboard: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('report')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
             activeTab === 'report'
-              ? 'bg-slate-900 text-white shadow-xs'
+              ? 'bg-blue-600 text-white shadow-xs'
               : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
           }`}
         >
@@ -87,9 +87,9 @@ export const InstructorDashboard: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('manage')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
             activeTab === 'manage'
-              ? 'bg-slate-900 text-white shadow-xs'
+              ? 'bg-blue-600 text-white shadow-xs'
               : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
           }`}
         >
@@ -124,7 +124,7 @@ export const InstructorDashboard: React.FC = () => {
                     key={asg.id}
                     className={`p-4 rounded-xl border transition-all ${
                       status === 'submitted' || status === 'late'
-                        ? 'border-slate-300 bg-slate-50/70 shadow-xs'
+                        ? 'border-blue-300 bg-blue-50/20 shadow-xs'
                         : 'border-slate-200/80 bg-white'
                     }`}
                   >
@@ -164,10 +164,10 @@ export const InstructorDashboard: React.FC = () => {
 
                             {/* Show student reflection note snippet */}
                             {sub.studentNote && (
-                              <div className="bg-slate-50 border border-slate-200 p-2.5 rounded-lg text-slate-800 text-xs flex items-start gap-1.5 mt-1">
-                                <MessageSquare className="w-3.5 h-3.5 text-slate-500 mt-0.5 flex-shrink-0" />
+                              <div className="bg-indigo-50/60 border border-indigo-100 p-2 rounded-lg text-indigo-900 text-xs flex items-start gap-1.5 mt-1">
+                                <MessageSquare className="w-3.5 h-3.5 text-indigo-600 mt-0.5 flex-shrink-0" />
                                 <div>
-                                  <span className="font-bold text-[10px] uppercase text-slate-600">โน้ตจากนักศึกษา:</span>{' '}
+                                  <span className="font-bold text-[10px] uppercase text-indigo-700">โน้ตจากนักศึกษา:</span>{' '}
                                   <span className="italic">"{sub.studentNote}"</span>
                                 </div>
                               </div>
@@ -175,7 +175,7 @@ export const InstructorDashboard: React.FC = () => {
 
                             {/* Show instructor note snippet if graded */}
                             {sub.instructorNote && (
-                              <div className="bg-emerald-50/60 border border-emerald-100 p-2.5 rounded-lg text-emerald-900 text-xs flex items-start gap-1.5 mt-1">
+                              <div className="bg-emerald-50/60 border border-emerald-100 p-2 rounded-lg text-emerald-900 text-xs flex items-start gap-1.5 mt-1">
                                 <Award className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
                                 <div>
                                   <span className="font-bold text-[10px] uppercase text-emerald-700">ข้อเสนอแนะที่ให้ไว้:</span>{' '}
@@ -209,7 +209,7 @@ export const InstructorDashboard: React.FC = () => {
                               ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
                               : status === 'graded'
                               ? 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                              : 'bg-slate-900 text-white hover:bg-slate-800 shadow-xs'
+                              : 'bg-blue-600 text-white hover:bg-blue-700 shadow-xs'
                           }`}
                         >
                           <Award className="w-3.5 h-3.5" />
