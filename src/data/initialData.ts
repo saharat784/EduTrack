@@ -1,0 +1,189 @@
+import { StudentProfile, InstructorProfile, Assignment, Submission, CourseSummary, GradeScale } from '../types';
+
+export const INITIAL_STUDENT: StudentProfile = {
+  id: 'std-saharath-01',
+  studentCode: '64070142',
+  fullName: 'Saharath Wiangkaew (สหรัฐ เวียงแก้ว)',
+  academicYear: 'Year 3 (ชั้นปีที่ 3)',
+  faculty: 'คณะวิศวกรรมศาสตร์ (Faculty of Engineering)',
+  major: 'วิศวกรรมคอมพิวเตอร์ (Computer Engineering)',
+  email: 'saharath.w@student.university.ac.th',
+  avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+};
+
+export const INITIAL_INSTRUCTOR: InstructorProfile = {
+  id: 'inst-vanness-01',
+  fullName: 'อาจารย์ ดร. พัฒนพงษ์ (Dr. Vanness Plus)',
+  title: 'อาจารย์ประจำภาควิชาวิศวกรรมคอมพิวเตอร์ & Tech Lead',
+  department: 'Department of Computer Engineering',
+  email: 'instructor@vannessplus.com',
+  avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80',
+};
+
+export const INITIAL_COURSE: CourseSummary = {
+  courseCode: 'CPE342',
+  courseName: 'Fullstack Web Application Architecture & Cloud Engineering',
+  academicYear: '2567 (2024)',
+  term: 'ภาคเรียนที่ 1 (Semester 1)',
+  instructorName: 'อาจารย์ ดร. พัฒนพงษ์ (Dr. Vanness Plus)',
+  totalAssignments: 5,
+  totalMaxScore: 100,
+};
+
+export const INITIAL_ASSIGNMENTS: Assignment[] = [
+  {
+    id: 'asg-01',
+    title: 'Lab 1: RESTful API Design & Relational Database Modeling',
+    description: 'ออกแบบ ER-Diagram และพัฒนา REST API ด้วย Node.js / TypeScript รองรับ CRUD operations พร้อม Data Validation และ Authentication JWT',
+    category: 'assignment',
+    dueDate: '2026-11-05T23:59:00', // Past due date
+    maxScore: 15,
+    weightPercentage: 15,
+    courseCode: 'CPE342',
+    courseName: 'Fullstack Web Application Architecture',
+    createdAt: '2026-10-25T09:00:00',
+  },
+  {
+    id: 'asg-02',
+    title: 'Quiz 1: Frontend State Management & Component Lifecycle',
+    description: 'ทดสอบความรู้ความเข้าใจเกี่ยวกับการจัดการ Global State, React Context, Custom Hooks, Redux/Zustand และการ Optimize Component Re-rendering',
+    category: 'quiz',
+    dueDate: '2026-11-12T23:59:00', // Past due date
+    maxScore: 10,
+    weightPercentage: 10,
+    courseCode: 'CPE342',
+    courseName: 'Fullstack Web Application Architecture',
+    createdAt: '2026-11-01T10:00:00',
+  },
+  {
+    id: 'asg-03',
+    title: 'Midterm Exam: Real-time System Implementation & Security',
+    description: 'ข้อสอบกลางภาค: ลงมือปฏิบัติสร้างระบบ Real-time Notification ร่วมกับ WebSocket พร้อมป้องกันช่องโหว่ OWASP Top 10 เช่น SQLi, XSS, CSRF',
+    category: 'exam',
+    dueDate: '2026-11-16T18:00:00', // Past due date
+    maxScore: 30,
+    weightPercentage: 30,
+    courseCode: 'CPE342',
+    courseName: 'Fullstack Web Application Architecture',
+    createdAt: '2026-11-05T08:00:00',
+  },
+  {
+    id: 'asg-04',
+    title: 'Lab 2: CI/CD Pipeline & Docker Containerization',
+    description: 'จัดทำ Dockerfile, docker-compose สำหรับ multi-container application และตั้งค่า GitHub Actions สำหรับ automated testing และ deployment',
+    category: 'assignment',
+    dueDate: '2026-11-25T23:59:00', // Upcoming
+    maxScore: 15,
+    weightPercentage: 15,
+    courseCode: 'CPE342',
+    courseName: 'Fullstack Web Application Architecture',
+    createdAt: '2026-11-15T10:00:00',
+  },
+  {
+    id: 'asg-05',
+    title: 'Final Project: Enterprise Student Performance Tracking Platform',
+    description: 'พัฒนา Web Application แบบ Fullstack สำหรับติดตามผลการเรียน ส่งงาน และประเมินเกรดนักศึกษา พร้อมระบบวิเคราะห์สถิติและการ Deploy บน Cloud',
+    category: 'project',
+    dueDate: '2026-12-10T23:59:00', // Upcoming
+    maxScore: 30,
+    weightPercentage: 30,
+    courseCode: 'CPE342',
+    courseName: 'Fullstack Web Application Architecture',
+    createdAt: '2026-11-15T10:00:00',
+  },
+];
+
+export const INITIAL_SUBMISSIONS: Record<string, Submission> = {
+  'asg-01': {
+    id: 'sub-01',
+    assignmentId: 'asg-01',
+    studentId: 'std-saharath-01',
+    submittedAt: '2026-11-04T21:15:00', // On-time
+    status: 'graded',
+    workType: 'link',
+    workContent: 'https://github.com/saharath-w/cpe342-lab1-rest-api',
+    workFileName: 'lab1-submission-report.pdf',
+    studentNote: 'ผมได้ออกแบบ Database Schema โดยแยก User Role และสร้าง Middleware ตรวจสอบ JWT Token ไว้อย่างรัดกุมครับ มีการเขียน Unit Test ครอบคลุม 85% ด้วย Jest ครับ',
+    score: 14.5,
+    instructorNote: 'ผลงานดีมาก มีการแบ่ง Layer สถาปัตยกรรม Controller-Service-Repository ชัดเจน โค้ดสะอาด ขอชมเรื่องการทำ Error Handling แบบ Global Handler ยอดเยี่ยมครับ',
+    gradedAt: '2026-11-07T14:30:00',
+    gradedBy: 'อาจารย์ ดร. พัฒนพงษ์',
+  },
+  'asg-02': {
+    id: 'sub-02',
+    assignmentId: 'asg-02',
+    studentId: 'std-saharath-01',
+    submittedAt: '2026-11-12T22:45:00', // On-time
+    status: 'graded',
+    workType: 'text',
+    workContent: 'ทำข้อสอบ Quiz ผ่านระบบ Online Assessment เรียบร้อยแล้ว รหัสเซสชัน: QUIZ-2026-09824',
+    studentNote: 'พาร์ทข้อสอบเรื่อง Custom Hooks ค่อนข้างท้าทาย แต่ได้นำความรู้เรื่อง useMemo กับ useCallback มาใช้ตอบโจทย์ได้ครบถ้วนครับ',
+    score: 9.5,
+    instructorNote: 'คะแนนสูงมาก เข้าใจคอนเซ็ปต์การเกิด Re-render และการจัดการ Dependency Array ได้ถูกต้องแม่นยำ',
+    gradedAt: '2026-11-14T11:00:00',
+    gradedBy: 'อาจารย์ ดร. พัฒนพงษ์',
+  },
+  'asg-03': {
+    id: 'sub-03',
+    assignmentId: 'asg-03',
+    studentId: 'std-saharath-01',
+    submittedAt: '2026-11-16T17:40:00', // On-time
+    status: 'submitted', // Waiting for grading
+    workType: 'link',
+    workContent: 'https://github.com/saharath-w/midterm-realtime-secure-service',
+    workFileName: 'midterm-architecture-diagram.png',
+    studentNote: 'ทำระบบ WebSocket ร่วมกับ Redis Pub/Sub เพื่อรองรับ Horizontal Scale และใส่ Helmet.js พร้อม Rate Limiter ป้องกัน Brute-force เรียบร้อยครับ อาจมีข้อสงสัยเรื่องการ Handle Disconnection เล็กน้อยครับอาจารย์',
+    score: null,
+    instructorNote: '',
+    gradedAt: null,
+    gradedBy: null,
+  },
+  'asg-04': {
+    id: 'sub-04',
+    assignmentId: 'asg-04',
+    studentId: 'std-saharath-01',
+    submittedAt: null,
+    status: 'not_submitted',
+    workType: 'link',
+    workContent: '',
+    studentNote: '',
+    score: null,
+    instructorNote: '',
+    gradedAt: null,
+    gradedBy: null,
+  },
+  'asg-05': {
+    id: 'sub-05',
+    assignmentId: 'asg-05',
+    studentId: 'std-saharath-01',
+    submittedAt: null,
+    status: 'not_submitted',
+    workType: 'link',
+    workContent: '',
+    studentNote: '',
+    score: null,
+    instructorNote: '',
+    gradedAt: null,
+    gradedBy: null,
+  },
+};
+
+export const GRADE_SCALE: GradeScale[] = [
+  { grade: 'A', minScore: 80, gpaPoint: 4.0, colorClass: 'bg-emerald-100 text-emerald-800 border-emerald-300' },
+  { grade: 'B+', minScore: 75, gpaPoint: 3.5, colorClass: 'bg-teal-100 text-teal-800 border-teal-300' },
+  { grade: 'B', minScore: 70, gpaPoint: 3.0, colorClass: 'bg-blue-100 text-blue-800 border-blue-300' },
+  { grade: 'C+', minScore: 65, gpaPoint: 2.5, colorClass: 'bg-indigo-100 text-indigo-800 border-indigo-300' },
+  { grade: 'C', minScore: 60, gpaPoint: 2.0, colorClass: 'bg-yellow-100 text-yellow-800 border-yellow-300' },
+  { grade: 'D+', minScore: 55, gpaPoint: 1.5, colorClass: 'bg-amber-100 text-amber-800 border-amber-300' },
+  { grade: 'D', minScore: 50, gpaPoint: 1.0, colorClass: 'bg-orange-100 text-orange-800 border-orange-300' },
+  { grade: 'F', minScore: 0, gpaPoint: 0.0, colorClass: 'bg-rose-100 text-rose-800 border-rose-300' },
+];
+
+export function calculateGrade(totalScore: number): GradeScale {
+  for (const scale of GRADE_SCALE) {
+    if (totalScore >= scale.minScore) {
+      return scale;
+    }
+  }
+  return GRADE_SCALE[GRADE_SCALE.length - 1];
+}
