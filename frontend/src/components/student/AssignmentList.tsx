@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Assignment, SubmissionStatus, AssignmentCategory } from '../../types';
+import { Assignment, SubmissionStatus } from '../../types';
 import { StatusBadge, CategoryBadge } from '../common/StatusBadge';
 import { SubmitWorkModal } from './SubmitWorkModal';
-import { Search, Filter, Calendar, Clock, Award, ArrowRight, MessageSquare, AlertTriangle } from 'lucide-react';
+import { Search, Calendar, Award, ChevronRight } from 'lucide-react';
 
 export const AssignmentList: React.FC = () => {
   const { assignments, submissions } = useApp();
@@ -106,10 +106,10 @@ export const AssignmentList: React.FC = () => {
         </div>
       </div>
 
-      {/* Assignment Cards Grid */}
-      <div className="grid grid-cols-1 gap-4">
+      {/* Assignment Cards Grid (Clean, Clickable Cards) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredAssignments.length === 0 ? (
-          <div className="bg-white p-8 rounded-xl border border-dashed border-slate-300 text-center text-slate-500">
+          <div className="col-span-full bg-white p-8 rounded-xl border border-dashed border-slate-300 text-center text-slate-500">
             <p className="text-sm font-semibold">ไม่พบรายการงานที่ตรงกับเงื่อนไขการค้นหา</p>
             <p className="text-xs text-slate-400 mt-1">ลองเปลี่ยนตัวกรอง หรือรีเซ็ตคำค้นหาดูครับ</p>
           </div>
@@ -123,55 +123,62 @@ export const AssignmentList: React.FC = () => {
             return (
               <div
                 key={asg.id}
-                className="bg-white rounded-xl p-5 border border-slate-200/80 shadow-sm hover:border-indigo-300 transition-all duration-200 flex flex-col justify-between gap-4"
+                onClick={() => setSelectedAssignment(asg)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedAssignment(asg);
+                  }
+                }}
+                className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-indigo-400 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex flex-col justify-between gap-4 group"
               >
+                {/* Header: Badges & Course Code */}
                 <div>
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
                     <div className="flex items-center gap-2">
                       <CategoryBadge category={asg.category} />
-                      <span className="text-xs font-semibold text-slate-400">{asg.courseCode}</span>
+                      <span className="text-xs font-bold text-slate-400">{asg.courseCode}</span>
                     </div>
-                    <StatusBadge status={status} />
+                    <StatusBadge status={status} size="sm" />
                   </div>
 
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                  {/* Title */}
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-2">
                     {asg.title}
                   </h3>
-
-                  <p className="text-xs text-slate-600 mt-1 line-clamp-2 leading-relaxed">
-                    {asg.description}
-                  </p>
                 </div>
 
-                {/* Submissions & Note Highlight */}
-                {sub && sub.status === 'graded' && sub.instructorNote && (
-                  <div className="bg-emerald-50/60 border border-emerald-100 rounded-lg p-2.5 text-xs text-emerald-800 flex items-start gap-2">
-                    <MessageSquare className="w-3.5 h-3.5 flex-shrink-0 text-emerald-600 mt-0.5" />
-                    <div className="flex-1">
-                      <span className="font-bold text-[11px] block">คำแนะนำจากอาจารย์:</span>
-                      <p className="line-clamp-2 italic">"{sub.instructorNote}"</p>
-                    </div>
-                  </div>
-                )}
-
-                {/* Footer with Due Date, Score & Action Button */}
-                <div className="flex flex-wrap items-center justify-between pt-3 border-t border-slate-100 gap-3">
-                  <div className="flex items-center gap-4 text-xs text-slate-500">
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                {/* Footer with Due Date, Score & Click Indication */}
+                <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-1.5 text-slate-500">
+                      <Calendar className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
                       <span>
-                        กำหนดส่ง: <strong className={isPastDue && status === 'not_submitted' ? 'text-rose-600 font-bold' : 'text-slate-700'}>
-                          {dueDate.toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: '2-digit' })} ({dueDate.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })})
+                        กำหนดส่ง:{' '}
+                        <strong
+                          className={
+                            isPastDue && status === 'not_submitted'
+                              ? 'text-rose-600 font-bold'
+                              : 'text-slate-700'
+                          }
+                        >
+                          {dueDate.toLocaleDateString('th-TH', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: '2-digit',
+                          })}
                         </strong>
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-1">
-                      <Award className="w-3.5 h-3.5 text-indigo-500" />
+                    <div className="flex items-center gap-1.5 text-slate-500">
+                      <Award className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
                       <span>
                         คะแนน:{' '}
                         {status === 'graded' ? (
-                          <strong className="text-emerald-600 font-extrabold text-sm">
+                          <strong className="text-emerald-600 font-extrabold">
                             {sub?.score} / {asg.maxScore}
                           </strong>
                         ) : (
@@ -181,25 +188,16 @@ export const AssignmentList: React.FC = () => {
                     </div>
                   </div>
 
-                  <button
-                    onClick={() => setSelectedAssignment(asg)}
-                    className={`flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
-                      status === 'graded'
-                        ? 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                        : status === 'submitted' || status === 'late'
-                        ? 'bg-blue-50 text-blue-700 hover:bg-blue-100'
-                        : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-xs'
-                    }`}
-                  >
+                  <div className="flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-0.5 transition-transform">
                     <span>
                       {status === 'graded'
-                        ? 'ดูผลคะแนน & โน้ต'
+                        ? 'ดูผลคะแนน'
                         : status === 'submitted' || status === 'late'
-                        ? 'แก้ไขการส่งงาน'
-                        : 'ส่งงาน (Submit)'}
+                        ? 'ดูผลงาน'
+                        : 'ส่งงาน'}
                     </span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                    <ChevronRight className="w-4 h-4" />
+                  </div>
                 </div>
               </div>
             );
@@ -207,7 +205,7 @@ export const AssignmentList: React.FC = () => {
         )}
       </div>
 
-      {/* Submit Work Modal */}
+      {/* Detail & Submission Modal */}
       <SubmitWorkModal
         isOpen={!!selectedAssignment}
         onClose={() => setSelectedAssignment(null)}
