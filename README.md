@@ -1,4 +1,4 @@
-# 🎓 EduTrack: Student Performance & Evaluation Tracking System
+# EduTrack: Student Performance & Evaluation Tracking System
 
 > **Skill Test for Fullstack Developer Trainee**  
 > **Applicant**: Saharath Wiangkaew (นายสหรัฐ เวียงแก้ว)  
@@ -6,13 +6,13 @@
 
 ---
 
-## 🏗️ Clean Fullstack Architecture (แยก Frontend และ Backend ชัดเจน)
+## Clean Fullstack Architecture (แยก Frontend และ Backend ชัดเจน)
 
 โปรเจกต์นี้ได้รับการออกแบบและจัดโครงสร้างแยกฝั่ง **Frontend (Client)** และ **Backend (Server)** ออกจากกันอย่างเป็นระเบียบตามมาตรฐาน Fullstack Application Development:
 
 ```
 d:\vanness-test\
-├── backend/                         # 🖥️ Node.js + Express REST API Server
+├── backend/                         # Node.js + Express REST API Server
 │   ├── package.json
 │   ├── tsconfig.json
 │   ├── data/
@@ -27,7 +27,7 @@ d:\vanness-test\
 │       └── types/
 │           └── index.ts             # Backend Type Definitions
 │
-├── frontend/                        # 🌐 React 18 + Vite + TypeScript Client
+├── frontend/                        # React 18 + Vite + TypeScript Client
 │   ├── index.html
 │   ├── package.json
 │   ├── vite.config.ts               # Vite Config with /api Reverse Proxy to Port 5000
@@ -58,7 +58,7 @@ d:\vanness-test\
 
 ---
 
-## ⚡ Quick Start (วิธีรันระบบ)
+## Quick Start (วิธีรันระบบ)
 
 ### 1. ติดตั้ง Dependencies ทั้งหมด
 ```bash
@@ -88,7 +88,7 @@ npm start
 
 ---
 
-## 🚀 Deployment Guide (แนวทางการ Deploy ขึ้น Cloud)
+## Deployment Guide (แนวทางการ Deploy ขึ้น Cloud)
 
 โปรเจกต์นี้รองรับการ Deploy ทั้งแบบ **แยก Frontend / Backend** และแบบ **รวมบริการเดี่ยว (Fullstack Container/Monolith)**:
 
@@ -119,7 +119,7 @@ docker compose up -d --build
 
 ---
 
-## 📡 RESTful API Endpoints Specification (Backend)
+## RESTful API Endpoints Specification (Backend)
 
 | Method | Endpoint | คำอธิบาย |
 |---|---|---|
@@ -137,13 +137,13 @@ docker compose up -d --build
 
 ---
 
-## ✨ Key Features & Business Logic
+## Key Features & Business Logic
 
 1. **Dual-Role Interaction (สลับบทบาทใน 1 คลิก)**:
    - ผู้ประเมินสามารถสลับระหว่าง **"มุมมองนักศึกษา"** และ **"มุมมองอาจารย์"** ได้ทันทีโดยไม่ต้อง Sign In ซ้ำ
 2. **Bilateral Evaluation Notes (โน้ต 2 ฝั่ง ตามโจทย์)**:
-   - 👨‍🎓 **โน้ตฝั่งนักศึกษา**: บันทึกแนวคิด อุปสรรค และสิ่งที่ได้เรียนรู้ประกอบการส่งงาน
-   - 👨‍🏫 **โน้ตฝั่งอาจารย์**: ข้อเสนอแนะและจุดเด่นของงานเพื่อให้นักศึกษานำไปพัฒนาต่อ
+   - **โน้ตฝั่งนักศึกษา**: บันทึกแนวคิด อุปสรรค และสิ่งที่ได้เรียนรู้ประกอบการส่งงาน
+   - **โน้ตฝั่งอาจารย์**: ข้อเสนอแนะและจุดเด่นของงานเพื่อให้นักศึกษานำไปพัฒนาต่อ
 3. **Automated Grade Projection**:
    - คำนวณตัดเกรดอิงเกณฑ์มาตรฐาน (A, B+, B, C+, C, D+, D, F) และ GPA คาดการณ์อัตโนมัติ
 4. **Resilient Architecture**:
@@ -151,7 +151,7 @@ docker compose up -d --build
 
 ---
 
-## 📦 โครงสร้างไฟล์สำหรับส่งมอบ (Submission Package Structure)
+## โครงสร้างไฟล์สำหรับส่งมอบ (Submission Package Structure)
 
 ```
 Skill Test for Fullstack Developer Trainee_Saharath Wiangkaew/
