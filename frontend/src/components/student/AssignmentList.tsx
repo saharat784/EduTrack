@@ -40,16 +40,16 @@ export const AssignmentList: React.FC = () => {
   return (
     <div className="space-y-4">
       {/* Search and Filters Bar */}
-      <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div className="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-3">
         {/* Search Input */}
         <div className="relative flex-1">
-          <Search className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
+          <Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" />
           <input
             type="text"
-            placeholder="ค้นหาชื่อการบ้าน, ข้อสอบ, หรือวิชา..."
+            placeholder="ค้นหาชื่องาน การสอบ หรือรหัสวิชา..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 text-xs sm:text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full pl-9 pr-4 py-1.5 text-xs sm:text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           />
         </div>
 
@@ -63,7 +63,7 @@ export const AssignmentList: React.FC = () => {
                 statusFilter === 'all' ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-600'
               }`}
             >
-              ทั้งหมด ({assignments.length})
+              ทั้งหมด
             </button>
             <button
               onClick={() => setStatusFilter('not_submitted')}
@@ -97,11 +97,11 @@ export const AssignmentList: React.FC = () => {
             onChange={(e) => setCategoryFilter(e.target.value)}
             className="px-3 py-1.5 text-xs font-medium border border-slate-200 rounded-lg bg-white text-slate-700 focus:ring-2 focus:ring-indigo-500"
           >
-            <option value="all">ทุกประเภทงาน</option>
-            <option value="assignment">การบ้าน / งานมอบหมาย</option>
-            <option value="quiz">แบบทดสอบย่อย (Quiz)</option>
-            <option value="exam">การสอบ (Exam)</option>
-            <option value="project">โครงงาน (Project)</option>
+            <option value="all">ทุกประเภท</option>
+            <option value="assignment">งานมอบหมาย</option>
+            <option value="quiz">แบบทดสอบ</option>
+            <option value="exam">การสอบ</option>
+            <option value="project">โครงงาน</option>
           </select>
         </div>
       </div>
@@ -110,8 +110,8 @@ export const AssignmentList: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredAssignments.length === 0 ? (
           <div className="col-span-full bg-white p-8 rounded-xl border border-dashed border-slate-300 text-center text-slate-500">
-            <p className="text-sm font-semibold">ไม่พบรายการงานที่ตรงกับเงื่อนไขการค้นหา</p>
-            <p className="text-xs text-slate-400 mt-1">ลองเปลี่ยนตัวกรอง หรือรีเซ็ตคำค้นหาดูครับ</p>
+            <p className="text-sm font-semibold">ไม่พบรายการงานที่ตรงกับคำค้นหา</p>
+            <p className="text-xs text-slate-400 mt-1">ลองเปลี่ยนตัวกรอง หรือรีเซ็ตคำค้นหา</p>
           </div>
         ) : (
           filteredAssignments.map((asg) => {
@@ -156,7 +156,7 @@ export const AssignmentList: React.FC = () => {
                     <div className="flex items-center gap-1.5 text-slate-500">
                       <Calendar className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
                       <span>
-                        กำหนดส่ง:{' '}
+                        ส่งภายใน:{' '}
                         <strong
                           className={
                             isPastDue && status === 'not_submitted'
@@ -182,7 +182,7 @@ export const AssignmentList: React.FC = () => {
                             {sub?.score} / {asg.maxScore}
                           </strong>
                         ) : (
-                          <span className="font-semibold text-slate-700">{asg.maxScore} คะแนน</span>
+                          <span className="font-semibold text-slate-700">{asg.maxScore}</span>
                         )}
                       </span>
                     </div>

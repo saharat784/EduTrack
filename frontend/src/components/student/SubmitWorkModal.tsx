@@ -62,11 +62,11 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!workContent.trim()) {
-      setError('กรุณาระบุลิงก์ผลงาน หรือเนื้อหาที่ต้องการส่งมอบ');
+      setError('กรุณาระบุลิงก์ผลงาน หรือเนื้อหาที่ต้องการส่ง');
       return;
     }
     if (!studentNote.trim()) {
-      setError('กรุณาระบุโน้ตจากนักศึกษา (เช่น แนวทางการทำงาน, สิ่งที่ได้เรียนรู้ หรือปัญหาที่พบ)');
+      setError('กรุณาระบุโน้ตจากนักศึกษา เช่น แนวทางการทำงาน หรือสิ่งที่ได้เรียนรู้');
       return;
     }
 
@@ -76,7 +76,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
       studentNote: studentNote.trim(),
     });
 
-    setSuccessMsg('บันทึกการส่งงานและโน้ตเรียบร้อยแล้ว!');
+    setSuccessMsg('บันทึกการส่งงานและโน้ตเรียบร้อยแล้ว');
     setTimeout(() => {
       onClose();
     }, 900);
@@ -87,12 +87,12 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
       isOpen={isOpen}
       onClose={onClose}
       title={assignment.title}
-      subtitle={`${assignment.courseCode}: ${assignment.courseName}`}
+      subtitle={`${assignment.courseCode} ${assignment.courseName}`}
       maxWidth="xl"
     >
-      <div className="space-y-6">
+      <div className="space-y-5">
         {/* Top Metadata Strip */}
-        <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+        <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
           <div className="flex items-center gap-2">
             <CategoryBadge category={assignment.category} />
             <StatusBadge status={currentSubmission?.status || 'not_submitted'} size="sm" />
@@ -118,44 +118,44 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
             <div className="flex items-center gap-1.5">
               <Award className="w-3.5 h-3.5 text-indigo-500" />
               <span>
-                คะแนนเต็ม: <strong className="text-slate-900">{assignment.maxScore} คะแนน</strong>
+                คะแนนเต็ม: <strong className="text-slate-900">{assignment.maxScore}</strong>
               </span>
             </div>
           </div>
         </div>
 
-        {/* 1. Assignment Description (รายละเอียดงานที่ย้ายเข้ามา) */}
-        <div className="space-y-2">
+        {/* 1. Assignment Description */}
+        <div className="space-y-1.5">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-            <Info className="w-4 h-4 text-indigo-500" />
-            <span>คำอธิบายและรายละเอียดงาน (Assignment Description)</span>
+            <Info className="w-3.5 h-3.5 text-indigo-500" />
+            <span>คำอธิบายและรายละเอียดงาน</span>
           </h4>
-          <div className="p-4 bg-indigo-50/30 rounded-xl border border-indigo-100 text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line">
+          <div className="p-3.5 bg-indigo-50/20 rounded-xl border border-indigo-100/70 text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line">
             {assignment.description}
           </div>
         </div>
 
-        {/* 2. Instructor Evaluation & Note (คำแนะนำและโน้ตจากอาจารย์ - ย้ายเข้ามา) */}
+        {/* 2. Instructor Evaluation & Note */}
         {isGraded && currentSubmission && (
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
-              <Award className="w-4 h-4 text-emerald-600" />
-              <span>ผลการตรวจและคำแนะนำจากอาจารย์ (Instructor Evaluation & Feedback)</span>
+              <Award className="w-3.5 h-3.5 text-emerald-600" />
+              <span>ผลการตรวจและคำแนะนำจากอาจารย์</span>
             </h4>
             <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-emerald-900">คะแนนที่ได้รับ:</span>
-                <span className="px-3 py-1 bg-white rounded-lg border border-emerald-300 font-extrabold text-emerald-700 text-base">
-                  {currentSubmission.score} / {assignment.maxScore} คะแนน ({(((currentSubmission.score || 0) / assignment.maxScore) * 100).toFixed(0)}%)
+                <span className="text-xs font-semibold text-emerald-900">คะแนนที่ได้รับ</span>
+                <span className="px-3 py-1 bg-white rounded-lg border border-emerald-300 font-extrabold text-emerald-700 text-sm sm:text-base">
+                  {currentSubmission.score} / {assignment.maxScore} คะแนน
                 </span>
               </div>
 
               <div className="bg-white/90 rounded-lg p-3.5 border border-emerald-100">
-                <span className="text-xs font-bold text-emerald-800 flex items-center gap-1.5 mb-1.5">
+                <span className="text-xs font-bold text-emerald-800 flex items-center gap-1.5 mb-1">
                   <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
-                  โน้ต/ข้อเสนอแนะจากอาจารย์ (Instructor Feedback Note):
+                  ข้อเสนอแนะจากอาจารย์
                 </span>
-                <p className="text-xs text-slate-800 leading-relaxed italic bg-emerald-50/40 p-2.5 rounded-md border border-emerald-100/60">
+                <p className="text-xs text-slate-800 leading-relaxed italic bg-emerald-50/30 p-2.5 rounded-md border border-emerald-100/50">
                   "{currentSubmission.instructorNote || 'ไม่มีบันทึกข้อเสนอแนะเพิ่มเติม'}"
                 </p>
                 <div className="text-[11px] text-slate-400 mt-2 flex items-center justify-between">
@@ -163,7 +163,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
                   <span>
                     วันที่ตรวจ:{' '}
                     {currentSubmission.gradedAt
-                      ? new Date(currentSubmission.gradedAt).toLocaleString('th-TH')
+                      ? new Date(currentSubmission.gradedAt).toLocaleDateString('th-TH')
                       : '-'}
                   </span>
                 </div>
@@ -172,16 +172,15 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
           </div>
         )}
 
-        {/* 3. Current Submission Preview (if already submitted) */}
+        {/* 3. Current Submission Preview */}
         {isSubmitted && currentSubmission && !isGraded && (
-          <div className="p-3.5 bg-blue-50/60 border border-blue-200 rounded-xl text-xs space-y-2">
+          <div className="p-3 bg-blue-50/60 border border-blue-200 rounded-xl text-xs space-y-2">
             <div className="flex items-center justify-between">
               <span className="font-bold text-blue-900 flex items-center gap-1.5">
-                <CheckCircle className="w-4 h-4 text-blue-600" />
-                ส่งงานแล้ว (รออาจารย์ตรวจ)
+                <CheckCircle className="w-3.5 h-3.5 text-blue-600" />
+                ส่งงานแล้ว รออาจารย์ตรวจ
               </span>
               <span className="text-blue-700 text-[11px]">
-                ส่งเมื่อ:{' '}
                 {currentSubmission.submittedAt
                   ? new Date(currentSubmission.submittedAt).toLocaleString('th-TH')
                   : '-'}
@@ -189,7 +188,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
             </div>
             <div className="bg-white p-2.5 rounded-lg border border-blue-100 flex items-center justify-between">
               <div className="truncate max-w-sm">
-                <span className="font-semibold text-slate-500 mr-2">ผลงานที่ส่ง:</span>
+                <span className="font-semibold text-slate-500 mr-2">ผลงาน:</span>
                 <span className="text-slate-800">{currentSubmission.workContent}</span>
               </div>
               {currentSubmission.workType === 'link' && (
@@ -206,16 +205,16 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
           </div>
         )}
 
-        {/* 4. Submission Form & Action Button (ปุ่มและแบบฟอร์มส่งงาน) */}
+        {/* 4. Submission Form & Action Button */}
         <form onSubmit={handleSubmit} className="space-y-4 pt-2 border-t border-slate-200">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-            <Send className="w-4 h-4 text-indigo-600" />
+            <Send className="w-3.5 h-3.5 text-indigo-600" />
             <span>
               {isGraded
-                ? 'ข้อมูลการส่งผลงานของนักศึกษา'
+                ? 'ข้อมูลการส่งผลงาน'
                 : isSubmitted
-                ? 'แก้ไขการส่งผลงาน (Edit Submission)'
-                : 'ส่งงานและบันทึกโน้ต (Submit Work)'}
+                ? 'แก้ไขการส่งผลงาน'
+                : 'ส่งงานและบันทึกโน้ต'}
             </span>
           </h4>
 
@@ -236,7 +235,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
                   }`}
                 >
                   <Link2 className="w-4 h-4" />
-                  <span>แนบลิงก์ (GitHub / Drive / Demo)</span>
+                  <span>แนบลิงก์ผลงาน</span>
                 </button>
                 <button
                   type="button"
@@ -248,7 +247,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
                   }`}
                 >
                   <FileText className="w-4 h-4" />
-                  <span>กรอกคำตอบ / รายงานสรุป (Text)</span>
+                  <span>กรอกข้อความสรุปงาน</span>
                 </button>
               </div>
             </div>
@@ -257,14 +256,14 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
           {/* Work Content Input */}
           <div>
             <label className="block text-xs font-bold text-slate-700 mb-1">
-              {workType === 'link' ? 'ลิงก์ผลงาน (URL)' : 'เนื้อหาการส่งงาน'}
+              {workType === 'link' ? 'ลิงก์ผลงาน' : 'เนื้อหาการส่งงาน'}
               {!isGraded && <span className="text-rose-500 ml-1">*</span>}
             </label>
             {workType === 'link' ? (
               <div className="relative">
                 <input
                   type="url"
-                  placeholder="https://github.com/..."
+                  placeholder="https://..."
                   value={workContent}
                   onChange={(e) => setWorkContent(e.target.value)}
                   disabled={isGraded}
@@ -284,7 +283,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
             ) : (
               <textarea
                 rows={3}
-                placeholder="พิมพ์เนื้อหาการส่งงาน รหัสการสอบ หรือสรุปผลงานที่นี่..."
+                placeholder="พิมพ์เนื้อหาการส่งงานหรือสรุปผลงานที่นี่..."
                 value={workContent}
                 onChange={(e) => setWorkContent(e.target.value)}
                 disabled={isGraded}
@@ -293,28 +292,22 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
             )}
           </div>
 
-          {/* Student Reflection Note (โน้ตฝั่งนักศึกษา) */}
+          {/* Student Reflection Note */}
           <div>
             <div className="flex items-center justify-between mb-1">
               <label className="block text-xs font-bold text-slate-700">
-                โน้ตจากนักศึกษาประกอบการประเมิน (Student Reflection & Notes)
+                โน้ตจากนักศึกษาประกอบการประเมิน
                 {!isGraded && <span className="text-rose-500 ml-1">*</span>}
               </label>
-              {!isGraded && (
-                <span className="text-[10px] text-indigo-600 font-medium">บังคับตามเกณฑ์การประเมิน</span>
-              )}
             </div>
             <textarea
               rows={3}
-              placeholder="ระบุสิ่งที่ได้เรียนรู้ อุปสรรคที่พบ วิธีการแก้ปัญหา หรือข้อความที่ต้องการแจ้งอาจารย์ผู้ตรวจ..."
+              placeholder="ระบุสิ่งที่ได้เรียนรู้ ปัญหาที่พบ หรือข้อความที่ต้องการแจ้งอาจารย์..."
               value={studentNote}
               onChange={(e) => setStudentNote(e.target.value)}
               disabled={isGraded}
               className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-slate-100 disabled:text-slate-600"
             />
-            <p className="text-[11px] text-slate-500 mt-1">
-              💡 โน้ตนี้จะปรากฏให้อาจารย์เห็นในระบบตรวจงาน เพื่อประกอบการพิจารณาให้คะแนน
-            </p>
           </div>
 
           {/* Timing alert */}
@@ -322,7 +315,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
             <div className="flex items-center gap-2 p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-xs">
               <AlertCircle className="w-4 h-4 flex-shrink-0 text-amber-600" />
               <span>
-                <strong>คำเตือน:</strong> เกินกำหนดเวลาส่งแล้ว ({dueDate.toLocaleString('th-TH')}) การส่งครั้งนี้จะถูกบันทึกสถานะเป็น <strong>"ส่งล่าช้า (Late)"</strong>
+                เกินกำหนดเวลาส่งแล้ว การส่งนี้จะถูกบันทึกสถานะเป็น <strong>ส่งล่าช้า</strong>
               </span>
             </div>
           )}
@@ -342,7 +335,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
           )}
 
           {/* Actions Button */}
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200">
+          <div className="flex items-center justify-end gap-3 pt-2 border-t border-slate-200">
             <button
               type="button"
               onClick={onClose}
@@ -353,7 +346,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
             {!isGraded && (
               <button
                 type="submit"
-                className="px-5 py-2 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-sm shadow-indigo-200 transition-colors flex items-center gap-1.5"
+                className="px-5 py-2 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-xs transition-colors flex items-center gap-1.5"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>{isSubmitted ? 'อัปเดตการส่งงาน' : 'ยืนยันการส่งงาน'}</span>

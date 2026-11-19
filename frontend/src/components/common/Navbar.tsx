@@ -17,59 +17,58 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo & Title */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-indigo-200">
-              <GraduationCap className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-indigo-100">
+              <GraduationCap className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-slate-900 text-lg tracking-tight">EduTrack</span>
-                <span className="px-2 py-0.5 text-[10px] font-bold bg-indigo-100 text-indigo-700 rounded-full uppercase tracking-wider">
-                  Vanness Skill Test
+                <span className="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 rounded-full border border-indigo-100">
+                  ระบบติดตามการเรียนรู้
                 </span>
                 <span
-                  className={`hidden md:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold border ${
+                  className={`hidden md:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium border ${
                     backendConnected
                       ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                       : 'bg-slate-100 text-slate-600 border-slate-200'
                   }`}
-                  title={backendConnected ? 'Connected to Node.js / Express Backend' : 'Running in Offline / Browser Cache mode'}
                 >
-                  <Server className="w-2.5 h-2.5" />
-                  <span>{backendConnected ? 'Backend API: Online (Port 5000)' : 'Client Local Mode'}</span>
+                  <span className={`w-1.5 h-1.5 rounded-full ${backendConnected ? 'bg-emerald-500 animate-pulse' : 'bg-slate-400'}`} />
+                  <span>{backendConnected ? 'Backend เชื่อมต่อแล้ว' : 'โหมดออฟไลน์'}</span>
                 </span>
               </div>
               <p className="text-xs text-slate-500 hidden sm:block">
-                Student Performance & Evaluation Tracking System
+                ระบบติดตามและประเมินผลการเรียนรู้ของนักศึกษา
               </p>
             </div>
           </div>
 
           {/* Center / Right controls */}
-          <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Quick Role Switcher Pill */}
             <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
               <button
                 onClick={() => setRole('student')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   role === 'student'
-                    ? 'bg-white text-indigo-700 shadow-sm'
+                    ? 'bg-white text-indigo-700 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <User className="w-4 h-4 text-indigo-500" />
-                <span>มุมมองนักศึกษา (Student)</span>
+                <span>มุมมองนักศึกษา</span>
               </button>
 
               <button
                 onClick={() => setRole('instructor')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   role === 'instructor'
-                    ? 'bg-white text-indigo-700 shadow-sm'
+                    ? 'bg-white text-indigo-700 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <Shield className="w-4 h-4 text-indigo-500" />
-                <span>มุมมองอาจารย์ (Instructor)</span>
+                <span>มุมมองอาจารย์</span>
               </button>
             </div>
 
@@ -85,11 +84,11 @@ export const Navbar: React.FC = () => {
 
               <button
                 onClick={exportJSON}
-                title="ดาวน์โหลดข้อมูลเป็น JSON"
-                className="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-100 rounded-lg border border-slate-200 transition-colors"
+                title="ดาวน์โหลดข้อมูลเป็นไฟล์ JSON"
+                className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-100 rounded-lg border border-slate-200 transition-colors"
               >
                 <Download className="w-3.5 h-3.5" />
-                <span>Export Data</span>
+                <span>ส่งออกข้อมูล</span>
               </button>
             </div>
           </div>
@@ -98,11 +97,11 @@ export const Navbar: React.FC = () => {
 
       {/* Role Indicator Banner */}
       <div className={`py-1.5 px-4 text-xs font-medium flex items-center justify-center gap-2 ${
-        role === 'student' ? 'bg-indigo-50 text-indigo-700 border-b border-indigo-100' : 'bg-purple-50 text-purple-700 border-b border-purple-100'
+        role === 'student' ? 'bg-indigo-50/70 text-indigo-800 border-b border-indigo-100' : 'bg-purple-50/70 text-purple-800 border-b border-purple-100'
       }`}>
         <Sparkles className="w-3.5 h-3.5" />
         <span>
-          ขณะนี้คุณกำลังดูระบบใน: <strong>{role === 'student' ? `มุมมองนักศึกษา: ${student.fullName}` : `มุมมองอาจารย์ผู้ประเมิน: ${instructor.fullName}`}</strong>
+          มุมมองปัจจุบัน: <strong>{role === 'student' ? student.fullName : instructor.fullName}</strong>
         </span>
       </div>
 
@@ -110,8 +109,8 @@ export const Navbar: React.FC = () => {
       {showResetConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
           <div className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl border border-slate-100">
-            <h4 className="font-bold text-slate-900 text-base">ยืนยันรีเซ็ตข้อมูลตัวอย่าง?</h4>
-            <p className="text-xs text-slate-600 mt-2">
+            <h4 className="font-bold text-slate-900 text-base">รีเซ็ตข้อมูลตัวอย่าง</h4>
+            <p className="text-xs text-slate-600 mt-2 leading-relaxed">
               ระบบจะรีเซ็ตข้อมูลการส่งงาน คะแนน และโน้ตการประเมินทั้งหมดกลับไปเป็นค่าเริ่มต้นของนายสหรัฐ เวียงแก้ว
             </p>
             <div className="flex items-center justify-end gap-2 mt-5">

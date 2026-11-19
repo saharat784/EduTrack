@@ -2,7 +2,7 @@ import React from 'react';
 import { StudentProfileCard } from './StudentProfileCard';
 import { AssignmentList } from './AssignmentList';
 import { useApp } from '../../context/AppContext';
-import { CheckCircle2, Clock, FileCheck, AlertCircle, BookCheck, Sparkles } from 'lucide-react';
+import { Clock, FileCheck, AlertCircle, BookCheck } from 'lucide-react';
 
 export const StudentDashboard: React.FC = () => {
   const { stats } = useApp();
@@ -19,7 +19,7 @@ export const StudentDashboard: React.FC = () => {
             <BookCheck className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-[11px] font-medium text-slate-500 block">งานมอบหมายทั้งหมด</span>
+            <span className="text-[11px] font-medium text-slate-500 block">งานทั้งหมด</span>
             <span className="text-xl font-bold text-slate-900">{stats.totalAssignments}</span>
           </div>
         </div>
@@ -29,7 +29,7 @@ export const StudentDashboard: React.FC = () => {
             <FileCheck className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-[11px] font-medium text-slate-500 block">ตรวจแล้ว (Graded)</span>
+            <span className="text-[11px] font-medium text-slate-500 block">ตรวจแล้ว</span>
             <span className="text-xl font-bold text-emerald-600">{stats.gradedCount}</span>
           </div>
         </div>
@@ -49,18 +49,18 @@ export const StudentDashboard: React.FC = () => {
             <AlertCircle className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-[11px] font-medium text-slate-500 block">ยังไม่ส่ง (Pending)</span>
+            <span className="text-[11px] font-medium text-slate-500 block">ยังไม่ส่ง</span>
             <span className="text-xl font-bold text-rose-600">{stats.notSubmittedCount}</span>
           </div>
         </div>
       </div>
 
       {/* Main Section Header */}
-      <div className="flex items-center justify-between pt-2">
+      <div className="flex items-center justify-between pt-1">
         <div>
-          <h3 className="text-lg font-bold text-slate-900">รายการงานมอบหมายและการสอบ (Assignments & Exams)</h3>
+          <h3 className="text-base font-bold text-slate-900">รายการงานมอบหมายและการสอบ</h3>
           <p className="text-xs text-slate-500">
-            ตรวจสอบกำหนดส่ง สถานะการตรวจ และบันทึกโน้ตประกอบการประเมิน
+            คลิกที่การ์ดเพื่อดูรายละเอียดงาน ผลการตรวจ และส่งงาน
           </p>
         </div>
       </div>

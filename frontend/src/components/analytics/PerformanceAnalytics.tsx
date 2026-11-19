@@ -1,17 +1,17 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { AssignmentCategory } from '../../types';
-import { TrendingUp, CheckCircle, Clock, Award, ShieldCheck, Target } from 'lucide-react';
+import { TrendingUp, CheckCircle, Award, Target } from 'lucide-react';
 
 export const PerformanceAnalytics: React.FC = () => {
   const { assignments, submissions, stats } = useApp();
 
   // Calculate scores per category
   const categories: { key: AssignmentCategory; label: string; maxScore: number; earnedScore: number }[] = [
-    { key: 'assignment', label: 'การบ้าน/งานมอบหมาย (Assignments)', maxScore: 0, earnedScore: 0 },
-    { key: 'quiz', label: 'แบบทดสอบย่อย (Quizzes)', maxScore: 0, earnedScore: 0 },
-    { key: 'exam', label: 'การสอบกลางภาค/ปลายภาค (Exams)', maxScore: 0, earnedScore: 0 },
-    { key: 'project', label: 'โครงงานพัฒนาซอฟต์แวร์ (Project)', maxScore: 0, earnedScore: 0 },
+    { key: 'assignment', label: 'งานมอบหมาย', maxScore: 0, earnedScore: 0 },
+    { key: 'quiz', label: 'แบบทดสอบย่อย', maxScore: 0, earnedScore: 0 },
+    { key: 'exam', label: 'การสอบกลางภาคและปลายภาค', maxScore: 0, earnedScore: 0 },
+    { key: 'project', label: 'โครงงานพัฒนาซอฟต์แวร์', maxScore: 0, earnedScore: 0 },
   ];
 
   assignments.forEach((asg) => {
@@ -31,7 +31,7 @@ export const PerformanceAnalytics: React.FC = () => {
         <div>
           <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
             <TrendingUp className="w-4 h-4 text-indigo-600" />
-            การวิเคราะห์ผลการเรียนรู้และสถิติคะแนน (Performance Analytics)
+            การวิเคราะห์ผลการเรียนรู้และสถิติคะแนน
           </h3>
           <p className="text-xs text-slate-500">
             สัดส่วนคะแนนสะสมแยกตามหมวดหมู่งาน และการคาดการณ์เกรดเฉลี่ย
@@ -52,12 +52,12 @@ export const PerformanceAnalytics: React.FC = () => {
               <div className="flex items-center justify-between text-xs mb-1.5">
                 <span className="font-bold text-slate-800">{cat.label}</span>
                 <span className="font-extrabold text-indigo-700">
-                  {cat.earnedScore.toFixed(1)} / {cat.maxScore} คะแนน ({pct.toFixed(0)}%)
+                  {cat.earnedScore.toFixed(1)} / {cat.maxScore} ({pct.toFixed(0)}%)
                 </span>
               </div>
-              <div className="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+              <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
                 <div
-                  className="bg-indigo-600 h-2.5 rounded-full transition-all duration-500"
+                  className="bg-indigo-600 h-2 rounded-full transition-all duration-500"
                   style={{ width: `${Math.min(pct, 100)}%` }}
                 />
               </div>
@@ -67,18 +67,18 @@ export const PerformanceAnalytics: React.FC = () => {
       </div>
 
       {/* Highlights Bar */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-        <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-100 flex items-center gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+        <div className="p-3 bg-emerald-50/70 rounded-xl border border-emerald-100 flex items-center gap-3">
           <div className="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
             <CheckCircle className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-[11px] font-semibold text-emerald-800 block">อัตราส่งงานตรงเวลา</span>
+            <span className="text-[11px] font-semibold text-emerald-800 block">ส่งงานตรงเวลา</span>
             <span className="text-lg font-black text-emerald-900">{stats.onTimeRate}%</span>
           </div>
         </div>
 
-        <div className="p-3 bg-indigo-50 rounded-xl border border-indigo-100 flex items-center gap-3">
+        <div className="p-3 bg-indigo-50/70 rounded-xl border border-indigo-100 flex items-center gap-3">
           <div className="w-9 h-9 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
             <Target className="w-5 h-5" />
           </div>
@@ -90,14 +90,14 @@ export const PerformanceAnalytics: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-3 bg-purple-50 rounded-xl border border-purple-100 flex items-center gap-3">
+        <div className="p-3 bg-purple-50/70 rounded-xl border border-purple-100 flex items-center gap-3">
           <div className="w-9 h-9 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
             <Award className="w-5 h-5" />
           </div>
           <div>
             <span className="text-[11px] font-semibold text-purple-800 block">เกรดเฉลี่ยสะสมคาดการณ์</span>
             <span className="text-lg font-black text-purple-900">
-              เกรด {stats.predictedGrade.grade} (GPA {stats.predictedGrade.gpaPoint.toFixed(1)})
+              เกรด {stats.predictedGrade.grade} • GPA {stats.predictedGrade.gpaPoint.toFixed(1)}
             </span>
           </div>
         </div>

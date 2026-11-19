@@ -3,7 +3,7 @@ import { Assignment, Submission } from '../../types';
 import { Modal } from '../common/Modal';
 import { StatusBadge, CategoryBadge } from '../common/StatusBadge';
 import { useApp } from '../../context/AppContext';
-import { Award, MessageSquare, ExternalLink, Calendar, AlertCircle, CheckCircle, User, FileText } from 'lucide-react';
+import { Award, MessageSquare, ExternalLink, AlertCircle, CheckCircle, User } from 'lucide-react';
 
 interface GradingModalProps {
   isOpen: boolean;
@@ -52,22 +52,22 @@ export const GradingModal: React.FC<GradingModalProps> = ({
     const numScore = parseFloat(score);
 
     if (isNaN(numScore) || numScore < 0) {
-      setError('กรุณากรอกคะแนนที่ถูกต้อง (ต้องไม่เป็นค่าติดลบ)');
+      setError('กรุณากรอกคะแนนที่ถูกต้อง');
       return;
     }
 
     if (numScore > assignment.maxScore) {
-      setError(`คะแนนที่ให้เกินคะแนนเต็ม (${assignment.maxScore} คะแนน)`);
+      setError(`คะแนนที่ให้เกินคะแนนเต็ม ${assignment.maxScore} คะแนน`);
       return;
     }
 
     if (!instructorNote.trim()) {
-      setError('กรุณาระบุโน้ต/ข้อเสนอแนะจากอาจารย์ เพื่อให้นักศึกษานำไปปรับปรุง');
+      setError('กรุณาระบุข้อเสนอแนะจากอาจารย์');
       return;
     }
 
     gradeSubmission(assignment.id, numScore, instructorNote.trim());
-    setSuccess('บันทึกผลการประเมินและโน้ตอาจารย์สำเร็จ!');
+    setSuccess('บันทึกผลการประเมินสำเร็จ');
     setTimeout(() => {
       onClose();
     }, 800);
@@ -77,13 +77,13 @@ export const GradingModal: React.FC<GradingModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="ประเมินผลการเรียนและให้คะแนน (Evaluation & Grading)"
-      subtitle={`นักศึกษา: ${student.fullName} (${student.studentCode})`}
+      title="ประเมินผลการเรียนและให้คะแนน"
+      subtitle={`นักศึกษา: ${student.fullName} • ${student.studentCode}`}
       maxWidth="xl"
     >
-      <div className="space-y-6">
+      <div className="space-y-5">
         {/* Student & Assignment Header */}
-        <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+        <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
             <CategoryBadge category={assignment.category} />
             <div className="flex items-center gap-2">
@@ -93,22 +93,22 @@ export const GradingModal: React.FC<GradingModalProps> = ({
               {currentSubmission && <StatusBadge status={currentSubmission.status} size="sm" />}
             </div>
           </div>
-          <h4 className="font-bold text-slate-900 text-base">{assignment.title}</h4>
+          <h4 className="font-bold text-slate-900 text-sm sm:text-base">{assignment.title}</h4>
           <p className="text-xs text-slate-600 mt-1">{assignment.description}</p>
         </div>
 
         {/* Student Submission Payload */}
-        <div className="border border-slate-200 rounded-xl p-4 bg-white space-y-3">
+        <div className="border border-slate-200 rounded-xl p-3.5 bg-white space-y-3">
           <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-100">
             <span className="font-bold text-slate-700 flex items-center gap-1.5">
               <User className="w-3.5 h-3.5 text-indigo-500" />
-              ผลงานที่นักศึกษาส่งมอบ
+              ผลงานที่ส่งมอบ
             </span>
             <span className="text-slate-500">
               วันที่ส่ง:{' '}
               {submittedDate ? (
                 <strong className={isLate ? 'text-amber-600' : 'text-slate-700'}>
-                  {submittedDate.toLocaleString('th-TH')} {isLate && '(ส่งล่าช้า)'}
+                  {submittedDate.toLocaleString('th-TH')} {isLate && '• ส่งล่าช้า'}
                 </strong>
               ) : (
                 'ยังไม่มีการส่งงาน'
@@ -124,7 +124,7 @@ export const GradingModal: React.FC<GradingModalProps> = ({
                     href={currentSubmission.workContent}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-indigo-600 hover:underline flex items-center gap-1 font-semibold"
+                    className="text-indigo-600 hover:underline flex items-center gap-1 font-medium"
                   >
                     <span>{currentSubmission.workContent}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -138,7 +138,7 @@ export const GradingModal: React.FC<GradingModalProps> = ({
               <div className="bg-indigo-50/60 border border-indigo-100 rounded-lg p-3">
                 <span className="text-xs font-bold text-indigo-900 flex items-center gap-1.5 mb-1">
                   <MessageSquare className="w-3.5 h-3.5 text-indigo-600" />
-                  โน้ตจากนักศึกษา (Student Reflection Note):
+                  โน้ตจากนักศึกษา
                 </span>
                 <p className="text-xs text-indigo-950 italic leading-relaxed">
                   "{currentSubmission.studentNote || 'นักศึกษาไม่ได้ระบุข้อความเพิ่มเติม'}"
@@ -154,16 +154,16 @@ export const GradingModal: React.FC<GradingModalProps> = ({
 
         {/* Instructor Evaluation Form */}
         <form onSubmit={handleSaveGrade} className="space-y-4">
-          <div className="bg-purple-50/50 border border-purple-200 rounded-xl p-4 space-y-4">
+          <div className="bg-purple-50/40 border border-purple-200/80 rounded-xl p-4 space-y-4">
             <h5 className="font-bold text-purple-900 text-sm flex items-center gap-1.5">
               <Award className="w-4 h-4 text-purple-600" />
-              การประเมินและให้คะแนนโดยอาจารย์ (Instructor Grading)
+              การประเมินและให้คะแนนโดยอาจารย์
             </h5>
 
             {/* Score Input */}
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                คะแนนที่ได้ (เต็ม {assignment.maxScore} คะแนน)
+                คะแนนที่ได้ เต็ม {assignment.maxScore}
                 <span className="text-rose-500 ml-1">*</span>
               </label>
               <div className="flex items-center gap-3">
@@ -175,35 +175,29 @@ export const GradingModal: React.FC<GradingModalProps> = ({
                   placeholder={`0 - ${assignment.maxScore}`}
                   value={score}
                   onChange={(e) => setScore(e.target.value)}
-                  className="w-36 px-3 py-2 text-sm font-bold text-purple-900 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white"
+                  className="w-32 px-3 py-1.5 text-sm font-bold text-purple-900 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 bg-white"
                   required
                 />
                 <span className="text-xs text-slate-500">
-                  / {assignment.maxScore} คะแนน ({((parseFloat(score) || 0) / assignment.maxScore * 100).toFixed(0)}%)
+                  / {assignment.maxScore} ({((parseFloat(score) || 0) / assignment.maxScore * 100).toFixed(0)}%)
                 </span>
               </div>
             </div>
 
             {/* Instructor Feedback Note */}
             <div>
-              <div className="flex items-center justify-between mb-1">
-                <label className="block text-xs font-bold text-slate-700">
-                  โน้ต/ข้อเสนอแนะจากอาจารย์ (Instructor Feedback & Note)
-                  <span className="text-rose-500 ml-1">*</span>
-                </label>
-                <span className="text-[10px] text-purple-600 font-medium">บันทึกประกอบการตัดเกรด</span>
-              </div>
+              <label className="block text-xs font-bold text-slate-700 mb-1">
+                ข้อเสนอแนะจากอาจารย์
+                <span className="text-rose-500 ml-1">*</span>
+              </label>
               <textarea
                 rows={3}
-                placeholder="ระบุข้อดี จุดเด่นของผลงาน สิ่งที่ต้องปรับปรุงแก้ไข หรือคำแนะนำเพิ่มเติมเพื่อให้นักศึกษาพัฒนาทักษะ..."
+                placeholder="ระบุข้อดี จุดเด่นของผลงาน หรือคำแนะนำเพิ่มเติม..."
                 value={instructorNote}
                 onChange={(e) => setInstructorNote(e.target.value)}
-                className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white"
+                className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 bg-white"
                 required
               />
-              <p className="text-[11px] text-slate-500 mt-1">
-                💡 โน้ตนี้จะแสดงให้นักศึกษาเห็นในหน้ารายงานผลการประเมิน
-              </p>
             </div>
           </div>
 
@@ -232,9 +226,9 @@ export const GradingModal: React.FC<GradingModalProps> = ({
             </button>
             <button
               type="submit"
-              className="px-5 py-2 text-xs font-semibold bg-purple-600 hover:bg-purple-700 text-white rounded-lg shadow-sm shadow-purple-200 transition-colors"
+              className="px-5 py-2 text-xs font-semibold bg-purple-600 hover:bg-purple-700 text-white rounded-lg shadow-xs transition-colors"
             >
-              บันทึกผลการตรวจและคะแนน
+              บันทึกคะแนน
             </button>
           </div>
         </form>

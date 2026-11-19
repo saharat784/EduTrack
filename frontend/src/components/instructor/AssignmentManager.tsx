@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Assignment, AssignmentCategory } from '../../types';
+import { AssignmentCategory } from '../../types';
 import { CategoryBadge } from '../common/StatusBadge';
 import { Modal } from '../common/Modal';
-import { Plus, Trash2, Calendar, Award, FileText, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Plus, Trash2, AlertCircle } from 'lucide-react';
 
 export const AssignmentManager: React.FC = () => {
   const { assignments, createAssignment, deleteAssignment, course } = useApp();
@@ -19,7 +19,6 @@ export const AssignmentManager: React.FC = () => {
   const [error, setError] = useState('');
 
   const handleOpenModal = () => {
-    // Default due date: 7 days from now
     const d = new Date();
     d.setDate(d.getDate() + 7);
     d.setHours(23, 59, 0, 0);
@@ -72,7 +71,7 @@ export const AssignmentManager: React.FC = () => {
       <div className="flex items-center justify-between">
         <div>
           <h3 className="text-base font-bold text-slate-900">
-            รายการงานมอบหมายและการสอบทั้งหมด ({assignments.length} รายการ)
+            รายการงานมอบหมายและการสอบทั้งหมด {assignments.length} รายการ
           </h3>
           <p className="text-xs text-slate-500">
             อาจารย์สามารถเพิ่มงานใหม่ หรือแก้ไขปรับปรุงกำหนดส่งและเกณฑ์คะแนนได้
@@ -80,10 +79,10 @@ export const AssignmentManager: React.FC = () => {
         </div>
         <button
           onClick={handleOpenModal}
-          className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-sm shadow-indigo-200 transition-colors"
+          className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-xs transition-colors"
         >
           <Plus className="w-4 h-4" />
-          <span>มอบหมายงานใหม่ (Add Assignment)</span>
+          <span>มอบหมายงานใหม่</span>
         </button>
       </div>
 
@@ -93,10 +92,10 @@ export const AssignmentManager: React.FC = () => {
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold uppercase tracking-wider text-[11px]">
               <tr>
-                <th className="py-3 px-4">ชื่องาน / รายละเอียด</th>
+                <th className="py-3 px-4">ชื่องาน</th>
                 <th className="py-3 px-4">ประเภท</th>
                 <th className="py-3 px-4">คะแนนเต็ม</th>
-                <th className="py-3 px-4">กำหนดส่ง (Due Date)</th>
+                <th className="py-3 px-4">กำหนดส่ง</th>
                 <th className="py-3 px-4 text-center">จัดการ</th>
               </tr>
             </thead>
@@ -145,8 +144,8 @@ export const AssignmentManager: React.FC = () => {
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title="มอบหมายงาน / การสอบใหม่"
-        subtitle={`วิชา ${course.courseCode}: ${course.courseName}`}
+        title="มอบหมายงานหรือการสอบใหม่"
+        subtitle={`วิชา ${course.courseCode} ${course.courseName}`}
         maxWidth="lg"
       >
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -157,7 +156,7 @@ export const AssignmentManager: React.FC = () => {
             </label>
             <input
               type="text"
-              placeholder="เช่น Lab 3: GraphQL API & Microservices Architecture"
+              placeholder="เช่น Lab 3: GraphQL API & Microservices"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
@@ -167,11 +166,11 @@ export const AssignmentManager: React.FC = () => {
 
           <div>
             <label className="block text-xs font-bold text-slate-700 mb-1">
-              คำอธิบายรายละเอียดและข้อกำหนด
+              คำอธิบายรายละเอียด
             </label>
             <textarea
               rows={3}
-              placeholder="อธิบายวัตถุประสงค์ ขอบเขตงาน และเกณฑ์การประเมิน..."
+              placeholder="อธิบายวัตถุประสงค์และข้อกำหนดของงาน..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
@@ -186,16 +185,16 @@ export const AssignmentManager: React.FC = () => {
                 onChange={(e) => setCategory(e.target.value as AssignmentCategory)}
                 className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg bg-white"
               >
-                <option value="assignment">การบ้าน / งานมอบหมาย (Assignment)</option>
-                <option value="quiz">แบบทดสอบย่อย (Quiz)</option>
-                <option value="exam">การสอบ (Exam)</option>
-                <option value="project">โครงงาน (Project)</option>
+                <option value="assignment">งานมอบหมาย</option>
+                <option value="quiz">แบบทดสอบ</option>
+                <option value="exam">การสอบ</option>
+                <option value="project">โครงงาน</option>
               </select>
             </div>
 
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                กำหนดส่ง (Due Date & Time)
+                กำหนดส่ง
                 <span className="text-rose-500 ml-1">*</span>
               </label>
               <input
@@ -211,7 +210,7 @@ export const AssignmentManager: React.FC = () => {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                คะแนนเต็ม (Max Score)
+                คะแนนเต็ม
                 <span className="text-rose-500 ml-1">*</span>
               </label>
               <input
@@ -228,7 +227,7 @@ export const AssignmentManager: React.FC = () => {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                ค่าน้ำหนักเกรด (%)
+                สัดส่วนคะแนนร้อยละ
               </label>
               <input
                 type="number"
@@ -259,9 +258,9 @@ export const AssignmentManager: React.FC = () => {
             </button>
             <button
               type="submit"
-              className="px-4 py-2 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-sm"
+              className="px-4 py-2 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-xs"
             >
-              สร้างงานมอบหมาย
+              บันทึกงาน
             </button>
           </div>
         </form>

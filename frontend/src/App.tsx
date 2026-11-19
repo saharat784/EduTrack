@@ -41,7 +41,7 @@ export const AppContent: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <span>ผู้สมัคร: <strong>Saharath Wiangkaew (สหรัฐ เวียงแก้ว)</strong></span>
+            <span>ผู้สมัคร: <strong>นายสหรัฐ เวียงแก้ว</strong></span>
             <span>•</span>
             <span className="text-indigo-600 font-semibold">Vanness Plus Consulting Co., Ltd.</span>
           </div>

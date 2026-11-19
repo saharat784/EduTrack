@@ -3,29 +3,29 @@ import { StudentProfile, InstructorProfile, Assignment, Submission, CourseSummar
 export const INITIAL_STUDENT: StudentProfile = {
   id: 'std-saharath-01',
   studentCode: '64070142',
-  fullName: 'Saharath Wiangkaew (สหรัฐ เวียงแก้ว)',
-  academicYear: 'Year 3 (ชั้นปีที่ 3)',
-  faculty: 'คณะวิศวกรรมศาสตร์ (Faculty of Engineering)',
-  major: 'วิศวกรรมคอมพิวเตอร์ (Computer Engineering)',
+  fullName: 'นายสหรัฐ เวียงแก้ว',
+  academicYear: 'ชั้นปีที่ 3',
+  faculty: 'คณะวิศวกรรมศาสตร์',
+  major: 'วิศวกรรมคอมพิวเตอร์',
   email: 'saharath.w@student.university.ac.th',
   avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
 };
 
 export const INITIAL_INSTRUCTOR: InstructorProfile = {
   id: 'inst-vanness-01',
-  fullName: 'อาจารย์ ดร. พัฒนพงษ์ (Dr. Vanness Plus)',
-  title: 'อาจารย์ประจำภาควิชาวิศวกรรมคอมพิวเตอร์ & Tech Lead',
-  department: 'Department of Computer Engineering',
+  fullName: 'อาจารย์ ดร. พัฒนพงษ์ ว่องวิทยากุล',
+  title: 'อาจารย์ประจำภาควิชาวิศวกรรมคอมพิวเตอร์',
+  department: 'ภาควิชาวิศวกรรมคอมพิวเตอร์',
   email: 'instructor@vannessplus.com',
   avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80',
 };
 
 export const INITIAL_COURSE: CourseSummary = {
   courseCode: 'CPE342',
-  courseName: 'Fullstack Web Application Architecture & Cloud Engineering',
-  academicYear: '2567 (2024)',
-  term: 'ภาคเรียนที่ 1 (Semester 1)',
-  instructorName: 'อาจารย์ ดร. พัฒนพงษ์ (Dr. Vanness Plus)',
+  courseName: 'สถาปัตยกรรมเว็บแอปพลิเคชันและวิศวกรรมคลาวด์',
+  academicYear: 'ปีการศึกษา 2567',
+  term: 'ภาคเรียนที่ 1',
+  instructorName: 'อาจารย์ ดร. พัฒนพงษ์ ว่องวิทยากุล',
   totalAssignments: 5,
   totalMaxScore: 100,
 };
@@ -33,26 +33,26 @@ export const INITIAL_COURSE: CourseSummary = {
 export const INITIAL_ASSIGNMENTS: Assignment[] = [
   {
     id: 'asg-01',
-    title: 'Lab 1: RESTful API Design & Relational Database Modeling',
-    description: 'ออกแบบ ER-Diagram และพัฒนา REST API ด้วย Node.js / TypeScript รองรับ CRUD operations พร้อม Data Validation และ Authentication JWT',
+    title: 'Lab 1: RESTful API Design & Database Modeling',
+    description: 'ออกแบบ ER-Diagram และพัฒนา REST API ด้วย Node.js และ TypeScript รองรับ CRUD operations พร้อม Data Validation และ Authentication JWT',
     category: 'assignment',
-    dueDate: '2026-11-05T23:59:00', // Past due date
+    dueDate: '2026-11-05T23:59:00',
     maxScore: 15,
     weightPercentage: 15,
     courseCode: 'CPE342',
-    courseName: 'Fullstack Web Application Architecture',
+    courseName: 'สถาปัตยกรรมเว็บแอปพลิเคชันและวิศวกรรมคลาวด์',
     createdAt: '2026-10-25T09:00:00',
   },
   {
     id: 'asg-02',
     title: 'Quiz 1: Frontend State Management & Component Lifecycle',
-    description: 'ทดสอบความรู้ความเข้าใจเกี่ยวกับการจัดการ Global State, React Context, Custom Hooks, Redux/Zustand และการ Optimize Component Re-rendering',
+    description: 'ทดสอบความรู้เกี่ยวกับการจัดการ Global State, React Context, Custom Hooks และการ Optimize Component Re-rendering',
     category: 'quiz',
-    dueDate: '2026-11-12T23:59:00', // Past due date
+    dueDate: '2026-11-12T23:59:00',
     maxScore: 10,
     weightPercentage: 10,
     courseCode: 'CPE342',
-    courseName: 'Fullstack Web Application Architecture',
+    courseName: 'สถาปัตยกรรมเว็บแอปพลิเคชันและวิศวกรรมคลาวด์',
     createdAt: '2026-11-01T10:00:00',
   },
   {
@@ -60,11 +60,11 @@ export const INITIAL_ASSIGNMENTS: Assignment[] = [
     title: 'Midterm Exam: Real-time System Implementation & Security',
     description: 'ข้อสอบกลางภาค: ลงมือปฏิบัติสร้างระบบ Real-time Notification ร่วมกับ WebSocket พร้อมป้องกันช่องโหว่ OWASP Top 10 เช่น SQLi, XSS, CSRF',
     category: 'exam',
-    dueDate: '2026-11-16T18:00:00', // Past due date
+    dueDate: '2026-11-16T18:00:00',
     maxScore: 30,
     weightPercentage: 30,
     courseCode: 'CPE342',
-    courseName: 'Fullstack Web Application Architecture',
+    courseName: 'สถาปัตยกรรมเว็บแอปพลิเคชันและวิศวกรรมคลาวด์',
     createdAt: '2026-11-05T08:00:00',
   },
   {
@@ -72,11 +72,11 @@ export const INITIAL_ASSIGNMENTS: Assignment[] = [
     title: 'Lab 2: CI/CD Pipeline & Docker Containerization',
     description: 'จัดทำ Dockerfile, docker-compose สำหรับ multi-container application และตั้งค่า GitHub Actions สำหรับ automated testing และ deployment',
     category: 'assignment',
-    dueDate: '2026-11-25T23:59:00', // Upcoming
+    dueDate: '2026-11-25T23:59:00',
     maxScore: 15,
     weightPercentage: 15,
     courseCode: 'CPE342',
-    courseName: 'Fullstack Web Application Architecture',
+    courseName: 'สถาปัตยกรรมเว็บแอปพลิเคชันและวิศวกรรมคลาวด์',
     createdAt: '2026-11-15T10:00:00',
   },
   {
@@ -84,11 +84,11 @@ export const INITIAL_ASSIGNMENTS: Assignment[] = [
     title: 'Final Project: Enterprise Student Performance Tracking Platform',
     description: 'พัฒนา Web Application แบบ Fullstack สำหรับติดตามผลการเรียน ส่งงาน และประเมินเกรดนักศึกษา พร้อมระบบวิเคราะห์สถิติและการ Deploy บน Cloud',
     category: 'project',
-    dueDate: '2026-12-10T23:59:00', // Upcoming
+    dueDate: '2026-12-10T23:59:00',
     maxScore: 30,
     weightPercentage: 30,
     courseCode: 'CPE342',
-    courseName: 'Fullstack Web Application Architecture',
+    courseName: 'สถาปัตยกรรมเว็บแอปพลิเคชันและวิศวกรรมคลาวด์',
     createdAt: '2026-11-15T10:00:00',
   },
 ];
@@ -98,7 +98,7 @@ export const INITIAL_SUBMISSIONS: Record<string, Submission> = {
     id: 'sub-01',
     assignmentId: 'asg-01',
     studentId: 'std-saharath-01',
-    submittedAt: '2026-11-04T21:15:00', // On-time
+    submittedAt: '2026-11-04T21:15:00',
     status: 'graded',
     workType: 'link',
     workContent: 'https://github.com/saharath-w/cpe342-lab1-rest-api',
@@ -113,7 +113,7 @@ export const INITIAL_SUBMISSIONS: Record<string, Submission> = {
     id: 'sub-02',
     assignmentId: 'asg-02',
     studentId: 'std-saharath-01',
-    submittedAt: '2026-11-12T22:45:00', // On-time
+    submittedAt: '2026-11-12T22:45:00',
     status: 'graded',
     workType: 'text',
     workContent: 'ทำข้อสอบ Quiz ผ่านระบบ Online Assessment เรียบร้อยแล้ว รหัสเซสชัน: QUIZ-2026-09824',
@@ -127,8 +127,8 @@ export const INITIAL_SUBMISSIONS: Record<string, Submission> = {
     id: 'sub-03',
     assignmentId: 'asg-03',
     studentId: 'std-saharath-01',
-    submittedAt: '2026-11-16T17:40:00', // On-time
-    status: 'submitted', // Waiting for grading
+    submittedAt: '2026-11-16T17:40:00',
+    status: 'submitted',
     workType: 'link',
     workContent: 'https://github.com/saharath-w/midterm-realtime-secure-service',
     workFileName: 'midterm-architecture-diagram.png',
