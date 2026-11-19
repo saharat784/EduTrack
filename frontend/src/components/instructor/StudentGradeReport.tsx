@@ -130,37 +130,6 @@ export const StudentGradeReport: React.FC = () => {
                         )}
                       </td>
                     </tr>
-
-                    {/* Bilateral Notes Row */}
-                    {(sub?.studentNote || sub?.instructorNote) && (
-                      <tr className="bg-slate-50/50 text-[11px]">
-                        <td colSpan={6} className="px-4 py-2.5 space-y-2 border-b border-slate-200">
-                          {sub.studentNote && (
-                            <div className="flex items-start gap-2 text-blue-900 bg-blue-50/80 p-2 rounded-md border border-blue-100">
-                              <MessageSquare className="w-3.5 h-3.5 text-blue-600 mt-0.5 flex-shrink-0" />
-                              <div>
-                                <span className="font-bold text-[10px] uppercase tracking-wide text-blue-700">
-                                  โน้ตฝั่งนักศึกษา:
-                                </span>{' '}
-                                <span className="note">"{sub.studentNote}"</span>
-                              </div>
-                            </div>
-                          )}
-
-                          {sub.instructorNote && (
-                            <div className="flex items-start gap-2 text-emerald-900 bg-emerald-50/80 p-2 rounded-md border border-emerald-100">
-                              <CheckCircle className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                              <div>
-                                <span className="font-bold text-[10px] uppercase tracking-wide text-emerald-700">
-                                  ข้อเสนอแนะจากอาจารย์:
-                                </span>{' '}
-                                <span className="note">"{sub.instructorNote}"</span>
-                              </div>
-                            </div>
-                          )}
-                        </td>
-                      </tr>
-                    )}
                   </React.Fragment>
                 );
               })}
@@ -172,7 +141,7 @@ export const StudentGradeReport: React.FC = () => {
                   สรุปผลคะแนนรวมสุทธิ:
                 </td>
                 <td className="py-3 px-3 text-right">{stats.totalPossibleScore}</td>
-                <td className="py-3 px-3 text-right text-base text-blue-700 font-black">
+                <td className="py-3 px-3 text-right text-base text-black font-black">
                   {stats.totalEarnedScore.toFixed(1)} คะแนน ({stats.currentAveragePercentage.toFixed(1)}%)
                 </td>
               </tr>
@@ -184,14 +153,14 @@ export const StudentGradeReport: React.FC = () => {
         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs">
           <h5 className="font-bold text-slate-800 mb-2">เกณฑ์การตัดเกรดมาตรฐาน</h5>
           <div className="grid grid-cols-4 sm:grid-cols-8 gap-2 text-center text-[11px]">
-            <div className="p-1.5 rounded bg-emerald-100 border border-emerald-300 font-bold text-emerald-800">A 80-100</div>
-            <div className="p-1.5 rounded bg-teal-100 border border-teal-300 font-bold text-teal-800">B+ 75-79</div>
-            <div className="p-1.5 rounded bg-blue-100 border border-blue-300 font-bold text-blue-800">B 70-74</div>
-            <div className="p-1.5 rounded bg-blue-100 border border-blue-300 font-bold text-blue-800">C+ 65-69</div>
-            <div className="p-1.5 rounded bg-yellow-100 border border-yellow-300 font-bold text-yellow-800">C 60-64</div>
-            <div className="p-1.5 rounded bg-amber-100 border border-amber-300 font-bold text-amber-800">D+ 55-59</div>
-            <div className="p-1.5 rounded bg-orange-100 border border-orange-300 font-bold text-orange-800">D 50-54</div>
-            <div className="p-1.5 rounded bg-rose-100 border border-rose-300 font-bold text-rose-800">F ต่ำกว่า 50</div>
+            <div className="p-1.5 rounded bg-emerald-500 border font-bold text-white">A 80-100</div>
+            <div className="p-1.5 rounded bg-teal-400 border font-bold text-white">B+ 75-79</div>
+            <div className="p-1.5 rounded bg-sky-500 border font-bold text-white">B 70-74</div>
+            <div className="p-1.5 rounded bg-sky-400 border font-bold text-white">C+ 65-69</div>
+            <div className="p-1.5 rounded bg-yellow-500 border font-bold text-white">C 60-64</div>
+            <div className="p-1.5 rounded bg-yellow-400 border font-bold text-white">D+ 55-59</div>
+            <div className="p-1.5 rounded bg-red-500 border font-bold text-white">D 50-54</div>
+            <div className="p-1.5 rounded bg-red-600 border font-bold text-white">F ต่ำกว่า 50</div>
           </div>
         </div>
 
