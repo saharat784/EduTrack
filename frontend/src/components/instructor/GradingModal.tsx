@@ -101,7 +101,7 @@ export const GradingModal: React.FC<GradingModalProps> = ({
         <div className="border border-slate-200 rounded-xl p-3.5 bg-white space-y-3">
           <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-100">
             <span className="font-bold text-slate-700 flex items-center gap-1.5">
-              <User className="w-3.5 h-3.5 text-indigo-500" />
+              <User className="w-3.5 h-3.5 text-blue-500" />
               ผลงานที่ส่งมอบ
             </span>
             <span className="text-slate-500">
@@ -124,7 +124,7 @@ export const GradingModal: React.FC<GradingModalProps> = ({
                     href={currentSubmission.workContent}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-indigo-600 hover:underline flex items-center gap-1 font-medium"
+                    className="text-blue-600 hover:underline flex items-center gap-1 font-medium"
                   >
                     <span>{currentSubmission.workContent}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -135,12 +135,12 @@ export const GradingModal: React.FC<GradingModalProps> = ({
               </div>
 
               {/* Bilateral Notes: Student's Note */}
-              <div className="bg-indigo-50/60 border border-indigo-100 rounded-lg p-3">
-                <span className="text-xs font-bold text-indigo-900 flex items-center gap-1.5 mb-1">
-                  <MessageSquare className="w-3.5 h-3.5 text-indigo-600" />
+              <div className="bg-blue-50/60 border border-blue-100 rounded-lg p-3">
+                <span className="text-xs font-bold text-blue-900 flex items-center gap-1.5 mb-1">
+                  <MessageSquare className="w-3.5 h-3.5 text-blue-600" />
                   โน้ตจากนักศึกษา
                 </span>
-                <p className="text-xs text-indigo-950 italic leading-relaxed">
+                <p className="text-xs text-blue-950 italic leading-relaxed">
                   "{currentSubmission.studentNote || 'นักศึกษาไม่ได้ระบุข้อความเพิ่มเติม'}"
                 </p>
               </div>

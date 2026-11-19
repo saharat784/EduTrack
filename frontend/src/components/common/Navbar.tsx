@@ -17,13 +17,13 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo & Title */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-indigo-100">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-blue-500 flex items-center justify-center text-white shadow-md shadow-blue-100">
               <GraduationCap className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-slate-900 text-lg tracking-tight">EduTrack</span>
-                <span className="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 rounded-full border border-indigo-100">
+                <span className="px-2 py-0.5 text-[10px] font-bold bg-blue-50 text-blue-700 rounded-full border border-blue-100">
                   ระบบติดตามการเรียนรู้
                 </span>
                 <span
@@ -51,11 +51,11 @@ export const Navbar: React.FC = () => {
                 onClick={() => setRole('student')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   role === 'student'
-                    ? 'bg-white text-indigo-700 shadow-xs'
+                    ? 'bg-white text-blue-700 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
-                <User className="w-4 h-4 text-indigo-500" />
+                <User className="w-4 h-4 text-blue-600" />
                 <span>มุมมองนักศึกษา</span>
               </button>
 
@@ -63,11 +63,11 @@ export const Navbar: React.FC = () => {
                 onClick={() => setRole('instructor')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   role === 'instructor'
-                    ? 'bg-white text-indigo-700 shadow-xs'
+                    ? 'bg-white text-blue-700 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
-                <Shield className="w-4 h-4 text-indigo-500" />
+                <Shield className="w-4 h-4 text-blue-600" />
                 <span>มุมมองอาจารย์</span>
               </button>
             </div>
@@ -96,9 +96,7 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* Role Indicator Banner */}
-      <div className={`py-1.5 px-4 text-xs font-medium flex items-center justify-center gap-2 ${
-        role === 'student' ? 'bg-indigo-50/70 text-indigo-800 border-b border-indigo-100' : 'bg-blue-50/70 text-blue-800 border-b border-blue-100'
-      }`}>
+      <div className="py-1.5 px-4 text-xs font-medium flex items-center justify-center gap-2 bg-blue-50/70 text-blue-800 border-b border-blue-100">
         <Sparkles className="w-3.5 h-3.5" />
         <span>
           มุมมองปัจจุบัน: <strong>{role === 'student' ? student.fullName : instructor.fullName}</strong>

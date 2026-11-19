@@ -37,7 +37,7 @@ export const StudentGradeReport: React.FC = () => {
         <div className="border-b border-slate-200 pb-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-extrabold tracking-wider uppercase text-indigo-600 block">
+              <span className="text-xs font-extrabold tracking-wider uppercase text-blue-600 block">
                 ใบบันทึกผลการเรียนรู้
               </span>
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 mt-1">
@@ -74,7 +74,7 @@ export const StudentGradeReport: React.FC = () => {
             </div>
             <div>
               <span className="text-slate-400 block text-[11px]">ระดับชั้นปี:</span>
-              <strong className="text-indigo-600 text-sm font-bold">{student.academicYear}</strong>
+              <strong className="text-blue-600 text-sm font-bold">{student.academicYear}</strong>
             </div>
             <div>
               <span className="text-slate-400 block text-[11px]">สาขาวิชา:</span>
@@ -136,10 +136,10 @@ export const StudentGradeReport: React.FC = () => {
                       <tr className="bg-slate-50/50 text-[11px]">
                         <td colSpan={6} className="px-4 py-2.5 space-y-2 border-b border-slate-200">
                           {sub.studentNote && (
-                            <div className="flex items-start gap-2 text-indigo-900 bg-indigo-50/80 p-2 rounded-md border border-indigo-100">
-                              <MessageSquare className="w-3.5 h-3.5 text-indigo-600 mt-0.5 flex-shrink-0" />
+                            <div className="flex items-start gap-2 text-blue-900 bg-blue-50/80 p-2 rounded-md border border-blue-100">
+                              <MessageSquare className="w-3.5 h-3.5 text-blue-600 mt-0.5 flex-shrink-0" />
                               <div>
-                                <span className="font-bold text-[10px] uppercase tracking-wide text-indigo-700">
+                                <span className="font-bold text-[10px] uppercase tracking-wide text-blue-700">
                                   โน้ตฝั่งนักศึกษา:
                                 </span>{' '}
                                 <span className="italic">"{sub.studentNote}"</span>
@@ -172,7 +172,7 @@ export const StudentGradeReport: React.FC = () => {
                   สรุปผลคะแนนรวมสุทธิ:
                 </td>
                 <td className="py-3 px-3 text-right">{stats.totalPossibleScore}</td>
-                <td className="py-3 px-3 text-right text-base text-indigo-700 font-black">
+                <td className="py-3 px-3 text-right text-base text-blue-700 font-black">
                   {stats.totalEarnedScore.toFixed(1)} คะแนน ({stats.currentAveragePercentage.toFixed(1)}%)
                 </td>
               </tr>
@@ -187,7 +187,7 @@ export const StudentGradeReport: React.FC = () => {
             <div className="p-1.5 rounded bg-emerald-100 border border-emerald-300 font-bold text-emerald-800">A 80-100</div>
             <div className="p-1.5 rounded bg-teal-100 border border-teal-300 font-bold text-teal-800">B+ 75-79</div>
             <div className="p-1.5 rounded bg-blue-100 border border-blue-300 font-bold text-blue-800">B 70-74</div>
-            <div className="p-1.5 rounded bg-indigo-100 border border-indigo-300 font-bold text-indigo-800">C+ 65-69</div>
+            <div className="p-1.5 rounded bg-blue-100 border border-blue-300 font-bold text-blue-800">C+ 65-69</div>
             <div className="p-1.5 rounded bg-yellow-100 border border-yellow-300 font-bold text-yellow-800">C 60-64</div>
             <div className="p-1.5 rounded bg-amber-100 border border-amber-300 font-bold text-amber-800">D+ 55-59</div>
             <div className="p-1.5 rounded bg-orange-100 border border-orange-300 font-bold text-orange-800">D 50-54</div>

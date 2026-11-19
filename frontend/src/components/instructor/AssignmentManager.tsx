@@ -79,7 +79,7 @@ export const AssignmentManager: React.FC = () => {
         </div>
         <button
           onClick={handleOpenModal}
-          className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-xs transition-colors"
+          className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-xs transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>มอบหมายงานใหม่</span>
@@ -159,7 +159,7 @@ export const AssignmentManager: React.FC = () => {
               placeholder="เช่น Lab 3: GraphQL API & Microservices"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -173,7 +173,7 @@ export const AssignmentManager: React.FC = () => {
               placeholder="อธิบายวัตถุประสงค์และข้อกำหนดของงาน..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
@@ -258,7 +258,7 @@ export const AssignmentManager: React.FC = () => {
             </button>
             <button
               type="submit"
-              className="px-4 py-2 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-xs"
+              className="px-4 py-2 text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-xs"
             >
               บันทึกงาน
             </button>

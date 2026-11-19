@@ -21,7 +21,7 @@ export const InstructorDashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Instructor Welcome Banner */}
-      <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white rounded-2xl p-6 shadow-xs relative overflow-hidden">
+      <div className="bg-gradient-to-r bg-blue-900 text-white rounded-2xl p-6 shadow-xs relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
@@ -43,12 +43,12 @@ export const InstructorDashboard: React.FC = () => {
           {/* Quick Metrics */}
           <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-3 rounded-xl border border-white/10">
             <div className="text-center px-3 border-r border-white/10">
-              <span className="text-[10px] uppercase font-bold text-blue-200 block">รอตรวจ</span>
-              <span className="text-2xl font-black text-amber-300">{stats.pendingGradingCount}</span>
+              <span className="text-[10px] uppercase font-bold text-white-300 block">รอตรวจ</span>
+              <span className="text-2xl font-black text-amber-500">{stats.pendingGradingCount}</span>
             </div>
             <div className="text-center px-3">
-              <span className="text-[10px] uppercase font-bold text-blue-200 block">ตรวจแล้ว</span>
-              <span className="text-2xl font-black text-emerald-300">{stats.gradedCount}</span>
+              <span className="text-[10px] uppercase font-bold text-white-300 block">ตรวจแล้ว</span>
+              <span className="text-2xl font-black text-emerald-500">{stats.gradedCount}</span>
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@ export const InstructorDashboard: React.FC = () => {
                                   href={sub.workContent}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-indigo-600 hover:underline flex items-center gap-1 font-medium"
+                                  className="text-blue-600 hover:underline flex items-center gap-1 font-medium"
                                 >
                                   <span>{sub.workContent}</span>
                                   <ExternalLink className="w-3 h-3" />
@@ -164,10 +164,10 @@ export const InstructorDashboard: React.FC = () => {
 
                             {/* Show student reflection note snippet */}
                             {sub.studentNote && (
-                              <div className="bg-indigo-50/60 border border-indigo-100 p-2 rounded-lg text-indigo-900 text-xs flex items-start gap-1.5 mt-1">
-                                <MessageSquare className="w-3.5 h-3.5 text-indigo-600 mt-0.5 flex-shrink-0" />
+                              <div className="bg-blue-50/60 border border-blue-100 p-2 rounded-lg text-blue-900 text-xs flex items-start gap-1.5 mt-1">
+                                <MessageSquare className="w-3.5 h-3.5 text-blue-600 mt-0.5 flex-shrink-0" />
                                 <div>
-                                  <span className="font-bold text-[10px] uppercase text-indigo-700">โน้ตจากนักศึกษา:</span>{' '}
+                                  <span className="font-bold text-[10px] uppercase text-blue-700">โน้ตจากนักศึกษา:</span>{' '}
                                   <span className="italic">"{sub.studentNote}"</span>
                                 </div>
                               </div>

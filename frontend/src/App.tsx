@@ -34,7 +34,7 @@ export const AppContent: React.FC = () => {
       <footer className="bg-white border-t border-slate-200 py-6 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <GraduationCap className="w-5 h-5 text-indigo-600" />
+            <GraduationCap className="w-5 h-5 text-blue-600" />
             <span className="font-bold text-slate-700">EduTrack Performance System</span>
             <span>•</span>
             <span>Skill Test for Fullstack Developer Trainee</span>
@@ -43,7 +43,7 @@ export const AppContent: React.FC = () => {
           <div className="flex items-center gap-3">
             <span>ผู้สมัคร: <strong>นายสหรัฐ เวียงแก้ว</strong></span>
             <span>•</span>
-            <span className="text-indigo-600 font-semibold">Vanness Plus Consulting Co., Ltd.</span>
+            <span className="text-blue-600 font-semibold">Vanness Plus Consulting Co., Ltd.</span>
           </div>
         </div>
       </footer>

@@ -8,13 +8,13 @@ export const StudentProfileCard: React.FC = () => {
   return (
     <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs relative overflow-hidden">
       {/* Background Accent */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-indigo-50/50 via-blue-50/30 to-transparent rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-blue-50/50 via-blue-50/30 to-transparent rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
 
       <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6">
         {/* Left: Avatar & Bio */}
         <div className="flex items-start sm:items-center gap-4">
           <div className="relative">
-            <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-indigo-600 flex items-center justify-center text-white font-bold text-2xl shadow-sm ring-4 ring-white">
+            <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-blue-600 flex items-center justify-center text-white font-bold text-2xl shadow-sm ring-4 ring-white">
               SW
             </div>
             <span className="absolute -bottom-1 -right-1 bg-emerald-500 text-white p-1 rounded-full ring-2 ring-white">
@@ -27,13 +27,13 @@ export const StudentProfileCard: React.FC = () => {
               <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
                 {student.fullName}
               </h2>
-              <span className="px-2.5 py-0.5 text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 rounded-full">
+              <span className="px-2.5 py-0.5 text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 rounded-full">
                 รหัสนักศึกษา {student.studentCode}
               </span>
             </div>
 
             <div className="flex flex-wrap items-center gap-y-1 gap-x-3 mt-2 text-xs sm:text-sm text-slate-600">
-              <span className="font-semibold text-indigo-600">
+              <span className="font-semibold text-blue-600">
                 {student.academicYear}
               </span>
               <span>•</span>
@@ -52,15 +52,15 @@ export const StudentProfileCard: React.FC = () => {
         </div>
 
         {/* Right: Academic Performance Score & Predicted Grade */}
-        <div className="flex items-center gap-4 bg-gradient-to-br from-indigo-50/70 to-blue-50/70 p-4 rounded-xl border border-indigo-100">
-          <div className="text-center px-3 border-r border-indigo-200/60">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-700 block">
+        <div className="flex items-center gap-4 bg-gradient-to-br from-blue-50/70 to-blue-50/40 p-4 rounded-xl border border-blue-100">
+          <div className="text-center px-3 border-r border-blue-200/60">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 block">
               เกรดคาดการณ์
             </span>
-            <span className="text-3xl font-black text-indigo-900 leading-tight">
+            <span className="text-3xl font-black text-blue-900 leading-tight">
               {stats.predictedGrade.grade}
             </span>
-            <span className="text-[11px] text-indigo-600 font-semibold block mt-0.5">
+            <span className="text-[11px] text-blue-600 font-semibold block mt-0.5">
               GPA {stats.predictedGrade.gpaPoint.toFixed(1)}
             </span>
           </div>
@@ -78,7 +78,7 @@ export const StudentProfileCard: React.FC = () => {
             </div>
             <div className="flex items-center justify-between gap-4">
               <span className="text-slate-500">ตรวจแล้ว:</span>
-              <span className="font-bold text-indigo-600">
+              <span className="font-bold text-blue-600">
                 {stats.gradedCount} จาก {stats.totalAssignments} งาน
               </span>
             </div>

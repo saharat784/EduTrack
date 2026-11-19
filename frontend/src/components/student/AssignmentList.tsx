@@ -49,7 +49,7 @@ export const AssignmentList: React.FC = () => {
             placeholder="ค้นหาชื่องาน การสอบ หรือรหัสวิชา..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-1.5 text-xs sm:text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full pl-9 pr-4 py-1.5 text-xs sm:text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
 
@@ -60,7 +60,7 @@ export const AssignmentList: React.FC = () => {
             <button
               onClick={() => setStatusFilter('all')}
               className={`px-2.5 py-1 rounded-md transition-colors ${
-                statusFilter === 'all' ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-600'
+                statusFilter === 'all' ? 'bg-white text-blue-700 shadow-xs' : 'text-slate-600'
               }`}
             >
               ทั้งหมด
@@ -68,7 +68,7 @@ export const AssignmentList: React.FC = () => {
             <button
               onClick={() => setStatusFilter('not_submitted')}
               className={`px-2.5 py-1 rounded-md transition-colors ${
-                statusFilter === 'not_submitted' ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-600'
+                statusFilter === 'not_submitted' ? 'bg-white text-blue-700 shadow-xs' : 'text-slate-600'
               }`}
             >
               ยังไม่ส่ง
@@ -76,7 +76,7 @@ export const AssignmentList: React.FC = () => {
             <button
               onClick={() => setStatusFilter('pending')}
               className={`px-2.5 py-1 rounded-md transition-colors ${
-                statusFilter === 'pending' ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-600'
+                statusFilter === 'pending' ? 'bg-white text-blue-700 shadow-xs' : 'text-slate-600'
               }`}
             >
               รอตรวจ
@@ -84,7 +84,7 @@ export const AssignmentList: React.FC = () => {
             <button
               onClick={() => setStatusFilter('graded')}
               className={`px-2.5 py-1 rounded-md transition-colors ${
-                statusFilter === 'graded' ? 'bg-white text-indigo-700 shadow-xs' : 'text-slate-600'
+                statusFilter === 'graded' ? 'bg-white text-blue-700 shadow-xs' : 'text-slate-600'
               }`}
             >
               ตรวจแล้ว
@@ -95,7 +95,7 @@ export const AssignmentList: React.FC = () => {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-3 py-1.5 text-xs font-medium border border-slate-200 rounded-lg bg-white text-slate-700 focus:ring-2 focus:ring-indigo-500"
+            className="px-3 py-1.5 text-xs font-medium border border-slate-200 rounded-lg bg-white text-slate-700 focus:ring-2 focus:ring-blue-500"
           >
             <option value="all">ทุกประเภท</option>
             <option value="assignment">งานมอบหมาย</option>
@@ -132,7 +132,7 @@ export const AssignmentList: React.FC = () => {
                     setSelectedAssignment(asg);
                   }
                 }}
-                className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-indigo-400 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex flex-col justify-between gap-4 group"
+                className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-blue-400 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex flex-col justify-between gap-4 group"
               >
                 {/* Header: Badges & Course Code */}
                 <div>
@@ -145,7 +145,7 @@ export const AssignmentList: React.FC = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-2">
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2">
                     {asg.title}
                   </h3>
                 </div>
@@ -174,7 +174,7 @@ export const AssignmentList: React.FC = () => {
                     </div>
 
                     <div className="flex items-center gap-1.5 text-slate-500">
-                      <Award className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
+                      <Award className="w-3.5 h-3.5 text-blue-500 flex-shrink-0" />
                       <span>
                         คะแนน:{' '}
                         {status === 'graded' ? (
@@ -188,7 +188,7 @@ export const AssignmentList: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-0.5 transition-transform">
+                  <div className="flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:translate-x-0.5 transition-transform">
                     <span>
                       {status === 'graded'
                         ? 'ดูผลคะแนน'

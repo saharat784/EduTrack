@@ -172,7 +172,7 @@ export const GRADE_SCALE: GradeScale[] = [
   { grade: 'A', minScore: 80, gpaPoint: 4.0, colorClass: 'bg-emerald-100 text-emerald-800 border-emerald-300' },
   { grade: 'B+', minScore: 75, gpaPoint: 3.5, colorClass: 'bg-teal-100 text-teal-800 border-teal-300' },
   { grade: 'B', minScore: 70, gpaPoint: 3.0, colorClass: 'bg-blue-100 text-blue-800 border-blue-300' },
-  { grade: 'C+', minScore: 65, gpaPoint: 2.5, colorClass: 'bg-indigo-100 text-indigo-800 border-indigo-300' },
+  { grade: 'C+', minScore: 65, gpaPoint: 2.5, colorClass: 'bg-blue-100 text-blue-800 border-blue-300' },
   { grade: 'C', minScore: 60, gpaPoint: 2.0, colorClass: 'bg-yellow-100 text-yellow-800 border-yellow-300' },
   { grade: 'D+', minScore: 55, gpaPoint: 1.5, colorClass: 'bg-amber-100 text-amber-800 border-amber-300' },
   { grade: 'D', minScore: 50, gpaPoint: 1.0, colorClass: 'bg-orange-100 text-orange-800 border-orange-300' },

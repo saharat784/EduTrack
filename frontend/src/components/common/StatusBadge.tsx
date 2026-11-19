@@ -53,8 +53,8 @@ export const CategoryBadge: React.FC<{ category: AssignmentCategory }> = ({ cate
   switch (category) {
     case 'assignment':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-200/80">
-          <FileText className="w-3 h-3 text-indigo-500" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200/80">
+          <FileText className="w-3 h-3 text-blue-500" />
           <span>งานมอบหมาย</span>
         </span>
       );
