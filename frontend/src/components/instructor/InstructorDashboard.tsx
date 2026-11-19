@@ -32,7 +32,7 @@ export const InstructorDashboard: React.FC = () => {
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black mt-1">
-              ยินดีต้อนรับ {instructor.fullName}
+              {instructor.fullName}
             </h2>
             <p className="text-xs text-blue-200/80 mt-1">
               กำลังประเมินนักศึกษา: <strong>{student.fullName} • {student.academicYear}</strong>
