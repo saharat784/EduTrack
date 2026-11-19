@@ -30,7 +30,7 @@ export const PerformanceAnalytics: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
         <div>
           <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-indigo-600" />
+            <TrendingUp className="w-4 h-4 text-slate-700" />
             การวิเคราะห์ผลการเรียนรู้และสถิติคะแนน
           </h3>
           <p className="text-xs text-slate-500">
@@ -43,21 +43,21 @@ export const PerformanceAnalytics: React.FC = () => {
         </div>
       </div>
 
-      {/* Progress Bars for Categories */}
+      {/* Progress Bars for Categories (Harmonized Slate Tone) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {categories.map((cat) => {
           const pct = cat.maxScore > 0 ? (cat.earnedScore / cat.maxScore) * 100 : 0;
           return (
-            <div key={cat.key} className="bg-slate-50/70 p-3.5 rounded-xl border border-slate-200/60">
+            <div key={cat.key} className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
               <div className="flex items-center justify-between text-xs mb-1.5">
-                <span className="font-bold text-slate-800">{cat.label}</span>
-                <span className="font-extrabold text-indigo-700">
+                <span className="font-semibold text-slate-800">{cat.label}</span>
+                <span className="font-bold text-slate-900">
                   {cat.earnedScore.toFixed(1)} / {cat.maxScore} ({pct.toFixed(0)}%)
                 </span>
               </div>
               <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
                 <div
-                  className="bg-indigo-600 h-2 rounded-full transition-all duration-500"
+                  className="bg-slate-900 h-2 rounded-full transition-all duration-500"
                   style={{ width: `${Math.min(pct, 100)}%` }}
                 />
               </div>
@@ -66,37 +66,37 @@ export const PerformanceAnalytics: React.FC = () => {
         })}
       </div>
 
-      {/* Highlights Bar */}
+      {/* Highlights Bar (Unified Minimal Slate Palette) */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-        <div className="p-3 bg-emerald-50/70 rounded-xl border border-emerald-100 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-            <CheckCircle className="w-5 h-5" />
+        <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 text-slate-800 flex items-center justify-center font-bold shadow-xs">
+            <CheckCircle className="w-4 h-4 text-emerald-600" />
           </div>
           <div>
-            <span className="text-[11px] font-semibold text-emerald-800 block">ส่งงานตรงเวลา</span>
-            <span className="text-lg font-black text-emerald-900">{stats.onTimeRate}%</span>
+            <span className="text-[11px] font-medium text-slate-500 block">ส่งงานตรงเวลา</span>
+            <span className="text-lg font-black text-slate-900">{stats.onTimeRate}%</span>
           </div>
         </div>
 
-        <div className="p-3 bg-indigo-50/70 rounded-xl border border-indigo-100 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
-            <Target className="w-5 h-5" />
+        <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 text-slate-800 flex items-center justify-center font-bold shadow-xs">
+            <Target className="w-4 h-4 text-indigo-600" />
           </div>
           <div>
-            <span className="text-[11px] font-semibold text-indigo-800 block">คะแนนสะสมปัจจุบัน</span>
-            <span className="text-lg font-black text-indigo-900">
+            <span className="text-[11px] font-medium text-slate-500 block">คะแนนสะสมปัจจุบัน</span>
+            <span className="text-lg font-black text-slate-900">
               {stats.totalEarnedScore.toFixed(1)} <span className="text-xs font-normal text-slate-500">/ 100</span>
             </span>
           </div>
         </div>
 
-        <div className="p-3 bg-purple-50/70 rounded-xl border border-purple-100 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
-            <Award className="w-5 h-5" />
+        <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 text-slate-800 flex items-center justify-center font-bold shadow-xs">
+            <Award className="w-4 h-4 text-slate-700" />
           </div>
           <div>
-            <span className="text-[11px] font-semibold text-purple-800 block">เกรดเฉลี่ยสะสมคาดการณ์</span>
-            <span className="text-lg font-black text-purple-900">
+            <span className="text-[11px] font-medium text-slate-500 block">เกรดเฉลี่ยสะสมคาดการณ์</span>
+            <span className="text-lg font-black text-slate-900">
               เกรด {stats.predictedGrade.grade} • GPA {stats.predictedGrade.gpaPoint.toFixed(1)}
             </span>
           </div>

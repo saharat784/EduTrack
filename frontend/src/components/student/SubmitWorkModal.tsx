@@ -92,7 +92,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
     >
       <div className="space-y-5">
         {/* Top Metadata Strip */}
-        <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+        <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200/80 text-xs">
           <div className="flex items-center gap-2">
             <CategoryBadge category={assignment.category} />
             <StatusBadge status={currentSubmission?.status || 'not_submitted'} size="sm" />
@@ -103,7 +103,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
               <Calendar className="w-3.5 h-3.5 text-slate-400" />
               <span>
                 กำหนดส่ง:{' '}
-                <strong className={isPastDue && !isGraded ? 'text-rose-600' : 'text-slate-800'}>
+                <strong className={isPastDue && !isGraded ? 'text-amber-600' : 'text-slate-800'}>
                   {dueDate.toLocaleString('th-TH', {
                     day: 'numeric',
                     month: 'short',
@@ -116,7 +116,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
             </div>
 
             <div className="flex items-center gap-1.5">
-              <Award className="w-3.5 h-3.5 text-indigo-500" />
+              <Award className="w-3.5 h-3.5 text-slate-500" />
               <span>
                 คะแนนเต็ม: <strong className="text-slate-900">{assignment.maxScore}</strong>
               </span>
@@ -127,10 +127,10 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
         {/* 1. Assignment Description */}
         <div className="space-y-1.5">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-            <Info className="w-3.5 h-3.5 text-indigo-500" />
+            <Info className="w-3.5 h-3.5 text-slate-400" />
             <span>คำอธิบายและรายละเอียดงาน</span>
           </h4>
-          <div className="p-3.5 bg-indigo-50/20 rounded-xl border border-indigo-100/70 text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line">
+          <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200/70 text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line">
             {assignment.description}
           </div>
         </div>
@@ -142,20 +142,20 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
               <Award className="w-3.5 h-3.5 text-emerald-600" />
               <span>ผลการตรวจและคำแนะนำจากอาจารย์</span>
             </h4>
-            <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4 space-y-3">
+            <div className="bg-emerald-50/50 border border-emerald-200/70 rounded-xl p-4 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold text-emerald-900">คะแนนที่ได้รับ</span>
-                <span className="px-3 py-1 bg-white rounded-lg border border-emerald-300 font-extrabold text-emerald-700 text-sm sm:text-base">
+                <span className="px-3 py-1 bg-white rounded-lg border border-emerald-200 font-extrabold text-emerald-700 text-sm sm:text-base">
                   {currentSubmission.score} / {assignment.maxScore} คะแนน
                 </span>
               </div>
 
-              <div className="bg-white/90 rounded-lg p-3.5 border border-emerald-100">
+              <div className="bg-white rounded-lg p-3.5 border border-emerald-100">
                 <span className="text-xs font-bold text-emerald-800 flex items-center gap-1.5 mb-1">
                   <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
                   ข้อเสนอแนะจากอาจารย์
                 </span>
-                <p className="text-xs text-slate-800 leading-relaxed italic bg-emerald-50/30 p-2.5 rounded-md border border-emerald-100/50">
+                <p className="text-xs text-slate-800 leading-relaxed italic bg-emerald-50/20 p-2.5 rounded-md border border-emerald-100/40">
                   "{currentSubmission.instructorNote || 'ไม่มีบันทึกข้อเสนอแนะเพิ่มเติม'}"
                 </p>
                 <div className="text-[11px] text-slate-400 mt-2 flex items-center justify-between">
@@ -174,19 +174,19 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
 
         {/* 3. Current Submission Preview */}
         {isSubmitted && currentSubmission && !isGraded && (
-          <div className="p-3 bg-blue-50/60 border border-blue-200 rounded-xl text-xs space-y-2">
+          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs space-y-2">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-blue-900 flex items-center gap-1.5">
-                <CheckCircle className="w-3.5 h-3.5 text-blue-600" />
+              <span className="font-bold text-slate-800 flex items-center gap-1.5">
+                <CheckCircle className="w-4 h-4 text-emerald-600" />
                 ส่งงานแล้ว รออาจารย์ตรวจ
               </span>
-              <span className="text-blue-700 text-[11px]">
+              <span className="text-slate-500 text-[11px]">
                 {currentSubmission.submittedAt
                   ? new Date(currentSubmission.submittedAt).toLocaleString('th-TH')
                   : '-'}
               </span>
             </div>
-            <div className="bg-white p-2.5 rounded-lg border border-blue-100 flex items-center justify-between">
+            <div className="bg-white p-2.5 rounded-lg border border-slate-200/70 flex items-center justify-between">
               <div className="truncate max-w-sm">
                 <span className="font-semibold text-slate-500 mr-2">ผลงาน:</span>
                 <span className="text-slate-800">{currentSubmission.workContent}</span>
@@ -196,7 +196,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
                   href={currentSubmission.workContent}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-indigo-600 hover:text-indigo-800 p-1"
+                  className="text-slate-600 hover:text-slate-900 p-1"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
@@ -206,9 +206,9 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
         )}
 
         {/* 4. Submission Form & Action Button */}
-        <form onSubmit={handleSubmit} className="space-y-4 pt-2 border-t border-slate-200">
+        <form onSubmit={handleSubmit} className="space-y-4 pt-2 border-t border-slate-200/80">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-            <Send className="w-3.5 h-3.5 text-indigo-600" />
+            <Send className="w-3.5 h-3.5 text-slate-600" />
             <span>
               {isGraded
                 ? 'ข้อมูลการส่งผลงาน'
@@ -230,7 +230,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
                   onClick={() => setWorkType('link')}
                   className={`flex items-center justify-center gap-2 py-2 px-3 text-xs font-semibold rounded-lg border transition-all ${
                     workType === 'link'
-                      ? 'bg-indigo-50 border-indigo-500 text-indigo-700 shadow-xs'
+                      ? 'bg-slate-900 border-slate-900 text-white shadow-xs'
                       : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
                   }`}
                 >
@@ -242,7 +242,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
                   onClick={() => setWorkType('text')}
                   className={`flex items-center justify-center gap-2 py-2 px-3 text-xs font-semibold rounded-lg border transition-all ${
                     workType === 'text'
-                      ? 'bg-indigo-50 border-indigo-500 text-indigo-700 shadow-xs'
+                      ? 'bg-slate-900 border-slate-900 text-white shadow-xs'
                       : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
                   }`}
                 >
@@ -267,14 +267,14 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
                   value={workContent}
                   onChange={(e) => setWorkContent(e.target.value)}
                   disabled={isGraded}
-                  className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-slate-100 disabled:text-slate-600"
+                  className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-slate-900 disabled:bg-slate-100 disabled:text-slate-600"
                 />
                 {workContent && (
                   <a
                     href={workContent}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute right-2 top-2 p-1 text-slate-400 hover:text-indigo-600"
+                    className="absolute right-2 top-2 p-1 text-slate-400 hover:text-slate-800"
                   >
                     <ExternalLink className="w-4 h-4" />
                   </a>
@@ -287,7 +287,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
                 value={workContent}
                 onChange={(e) => setWorkContent(e.target.value)}
                 disabled={isGraded}
-                className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-slate-100 disabled:text-slate-600"
+                className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-slate-900 disabled:bg-slate-100 disabled:text-slate-600"
               />
             )}
           </div>
@@ -306,13 +306,13 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
               value={studentNote}
               onChange={(e) => setStudentNote(e.target.value)}
               disabled={isGraded}
-              className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-slate-100 disabled:text-slate-600"
+              className="w-full px-3 py-2 text-xs sm:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-slate-900 disabled:bg-slate-100 disabled:text-slate-600"
             />
           </div>
 
           {/* Timing alert */}
           {isPastDue && !isGraded && (
-            <div className="flex items-center gap-2 p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-xs">
+            <div className="flex items-center gap-2 p-2.5 bg-amber-50 border border-amber-200/80 rounded-lg text-amber-800 text-xs">
               <AlertCircle className="w-4 h-4 flex-shrink-0 text-amber-600" />
               <span>
                 เกินกำหนดเวลาส่งแล้ว การส่งนี้จะถูกบันทึกสถานะเป็น <strong>ส่งล่าช้า</strong>
@@ -335,7 +335,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
           )}
 
           {/* Actions Button */}
-          <div className="flex items-center justify-end gap-3 pt-2 border-t border-slate-200">
+          <div className="flex items-center justify-end gap-3 pt-2 border-t border-slate-200/80">
             <button
               type="button"
               onClick={onClose}
@@ -346,7 +346,7 @@ export const SubmitWorkModal: React.FC<SubmitWorkModalProps> = ({
             {!isGraded && (
               <button
                 type="submit"
-                className="px-5 py-2 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-xs transition-colors flex items-center gap-1.5"
+                className="px-5 py-2 text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white rounded-lg shadow-xs transition-colors flex items-center gap-1.5"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>{isSubmitted ? 'อัปเดตการส่งงาน' : 'ยืนยันการส่งงาน'}</span>
