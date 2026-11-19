@@ -1,7 +1,8 @@
 import { StudentProfile, InstructorProfile, CourseSummary, Assignment, Submission } from '../types';
 import { storageService } from './storageService';
 
-const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined)?.replace(/\/+$/, '') || '/api';
+const rawBase = (import.meta.env.VITE_API_BASE as string | undefined)?.trim().replace(/\/+$/, '') || '/api';
+const API_BASE = rawBase.startsWith('http') && !rawBase.endsWith('/api') ? `${rawBase}/api` : rawBase;
 
 export const apiService = {
   // Check if backend is available
