@@ -23,7 +23,7 @@ export const Navbar: React.FC = () => {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-slate-900 text-lg tracking-tight">EduTrack</span>
-                <span className="px-2 py-0.5 text-[10px] font-bold bg-blue-50 text-blue-700 rounded-full border border-blue-100">
+                <span className="px-2 py-0.5 text-[10px] font-bold bg-blue-50 rounded-full border">
                   ระบบติดตามการเรียนรู้
                 </span>
                 <span

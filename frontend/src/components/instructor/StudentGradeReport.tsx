@@ -126,7 +126,7 @@ export const StudentGradeReport: React.FC = () => {
                             {sub.score}
                           </span>
                         ) : (
-                          <span className="text-slate-400 italic">รอตรวจ</span>
+                          <span className="text-slate-400">รอตรวจ</span>
                         )}
                       </td>
                     </tr>
@@ -142,7 +142,7 @@ export const StudentGradeReport: React.FC = () => {
                                 <span className="font-bold text-[10px] uppercase tracking-wide text-blue-700">
                                   โน้ตฝั่งนักศึกษา:
                                 </span>{' '}
-                                <span className="italic">"{sub.studentNote}"</span>
+                                <span className="note">"{sub.studentNote}"</span>
                               </div>
                             </div>
                           )}
@@ -154,7 +154,7 @@ export const StudentGradeReport: React.FC = () => {
                                 <span className="font-bold text-[10px] uppercase tracking-wide text-emerald-700">
                                   ข้อเสนอแนะจากอาจารย์:
                                 </span>{' '}
-                                <span className="italic">"{sub.instructorNote}"</span>
+                                <span className="note">"{sub.instructorNote}"</span>
                               </div>
                             </div>
                           )}

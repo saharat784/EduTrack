@@ -53,29 +53,29 @@ export const CategoryBadge: React.FC<{ category: AssignmentCategory }> = ({ cate
   switch (category) {
     case 'assignment':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200/80">
-          <FileText className="w-3 h-3 text-blue-500" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white/90 text-slate-800 shadow-2xs">
+          <FileText className="w-3 h-3 text-slate-800" />
           <span>งานมอบหมาย</span>
         </span>
       );
     case 'quiz':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-purple-50 text-purple-700 border border-purple-200/80">
-          <HelpCircle className="w-3 h-3 text-purple-500" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white/90 text-slate-800 shadow-2xs">
+          <HelpCircle className="w-3 h-3 text-slate-800" />
           <span>แบบทดสอบ</span>
         </span>
       );
     case 'exam':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-rose-50 text-rose-700 border border-rose-200/80">
-          <BookOpen className="w-3 h-3 text-rose-500" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white/90 text-slate-800 shadow-2xs">
+          <BookOpen className="w-3 h-3 text-slate-800" />
           <span>การสอบ</span>
         </span>
       );
     case 'project':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80">
-          <Layers className="w-3 h-3 text-amber-600" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white/90 text-slate-800 shadow-2xs">
+          <Layers className="w-3 h-3 text-slate-800" />
           <span>โครงงาน</span>
         </span>
       );

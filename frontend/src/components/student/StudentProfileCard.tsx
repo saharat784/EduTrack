@@ -27,7 +27,7 @@ export const StudentProfileCard: React.FC = () => {
               <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
                 {student.fullName}
               </h2>
-              <span className="px-2.5 py-0.5 text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 rounded-full">
+              <span className="px-2.5 py-0.5 text-xs font-semibold bg-blue-50 rounded-full">
                 รหัสนักศึกษา {student.studentCode}
               </span>
             </div>

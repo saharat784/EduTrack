@@ -140,7 +140,7 @@ export const GradingModal: React.FC<GradingModalProps> = ({
                   <MessageSquare className="w-3.5 h-3.5 text-blue-600" />
                   โน้ตจากนักศึกษา
                 </span>
-                <p className="text-xs text-blue-950 italic leading-relaxed">
+                <p className="text-xs text-blue-950 leading-relaxed">
                   "{currentSubmission.studentNote || 'นักศึกษาไม่ได้ระบุข้อความเพิ่มเติม'}"
                 </p>
               </div>

@@ -120,40 +120,32 @@ export const AssignmentList: React.FC = () => {
             const dueDate = new Date(asg.dueDate);
             const isPastDue = new Date() > dueDate;
 
-            // Distinct banner colors for each category
+            // Distinct banner colors for each category (richer/darker)
             const bannerConfig = {
               assignment: {
-                bg: 'bg-blue-50/70',
-                border: 'border-blue-200/90 hover:border-blue-400',
-                divider: 'border-blue-100',
-                textHover: 'group-hover:text-blue-700',
-                actionText: 'text-blue-600',
+                bg: 'bg-sky-500',
+                divider: 'border-sky-600',
+                actionText: 'text-white',
               },
               quiz: {
-                bg: 'bg-purple-50/70',
-                border: 'border-purple-200/90 hover:border-purple-400',
-                divider: 'border-purple-100',
-                textHover: 'group-hover:text-purple-700',
-                actionText: 'text-purple-600',
+                bg: 'bg-emerald-500',
+                divider: 'border-emerald-600',
+                actionText: 'text-white',
               },
               exam: {
-                bg: 'bg-rose-50/70',
-                border: 'border-rose-200/90 hover:border-rose-400',
-                divider: 'border-rose-100',
-                textHover: 'group-hover:text-rose-700',
-                actionText: 'text-rose-600',
+                bg: 'bg-red-500',
+                divider: 'border-red-600',
+                actionText: 'text-white',
               },
               project: {
-                bg: 'bg-amber-50/70',
-                border: 'border-amber-200/90 hover:border-amber-400',
-                divider: 'border-amber-100',
-                textHover: 'group-hover:text-amber-800',
-                actionText: 'text-amber-700',
+                bg: 'bg-yellow-500',
+                divider: 'border-yellow-600',
+                actionText: 'text-white',
               },
             }[asg.category] || {
-              bg: 'bg-white',
-              border: 'border-slate-200 hover:border-blue-300',
-              divider: 'border-slate-100',
+              bg: 'bg-slate-100',
+              border: 'border-slate-300 hover:border-slate-400',
+              divider: 'border-slate-200',
               textHover: 'group-hover:text-blue-600',
               actionText: 'text-blue-600',
             };
@@ -170,20 +162,20 @@ export const AssignmentList: React.FC = () => {
                     setSelectedAssignment(asg);
                   }
                 }}
-                className={`${bannerConfig.bg} rounded-xl p-5 border ${bannerConfig.border} shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex flex-col justify-between gap-4 group`}
+                className={`${bannerConfig.bg} rounded-xl p-5 border ${bannerConfig} shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex flex-col justify-between gap-4 group`}
               >
                 {/* Header: Badges & Course Code */}
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
                     <div className="flex items-center gap-2">
                       <CategoryBadge category={asg.category} />
-                      <span className="text-xs font-bold text-slate-400">{asg.courseCode}</span>
+                      <span className="text-xs font-bold text-white">{asg.courseCode}</span>
                     </div>
                     <StatusBadge status={status} size="sm" />
                   </div>
 
                   {/* Title */}
-                  <h3 className={`text-base font-bold text-slate-900 ${bannerConfig.textHover} transition-colors line-clamp-2`}>
+                  <h3 className={`text-base font-bold text-white ${bannerConfig} transition-colors line-clamp-2`}>
                     {asg.title}
                   </h3>
                 </div>
@@ -191,15 +183,15 @@ export const AssignmentList: React.FC = () => {
                 {/* Footer with Due Date, Score & Click Indication */}
                 <div className={`flex items-center justify-between pt-3 border-t ${bannerConfig.divider} text-xs`}>
                   <div className="space-y-1">
-                    <div className="flex items-center gap-1.5 text-slate-500">
-                      <Calendar className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                    <div className="flex items-center gap-1.5 text-white">
+                      <Calendar className="w-3.5 h-3.5 text-white" />
                       <span>
                         ส่งภายใน:{' '}
                         <strong
                           className={
                             isPastDue && status === 'not_submitted'
                               ? 'text-rose-600 font-bold'
-                              : 'text-slate-700'
+                              : 'text-white'
                           }
                         >
                           {dueDate.toLocaleDateString('th-TH', {
@@ -211,15 +203,15 @@ export const AssignmentList: React.FC = () => {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-1.5 text-slate-500">
+                    <div className="flex items-center gap-1.5 text-white">
                       <span>
                         คะแนน:{' '}
                         {status === 'graded' ? (
-                          <strong className="text-emerald-600 font-extrabold">
+                          <strong className="text-white">
                             {sub?.score} / {asg.maxScore}
                           </strong>
                         ) : (
-                          <span className="font-semibold text-slate-700">{asg.maxScore}</span>
+                          <span className="font-semibold text-white">{asg.maxScore}</span>
                         )}
                       </span>
                     </div>

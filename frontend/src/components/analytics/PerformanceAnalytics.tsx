@@ -48,10 +48,10 @@ export const PerformanceAnalytics: React.FC = () => {
         {categories.map((cat) => {
           const pct = cat.maxScore > 0 ? (cat.earnedScore / cat.maxScore) * 100 : 0;
           const colorMap: Record<string, { bar: string; text: string }> = {
-            assignment: { bar: 'bg-blue-600', text: 'text-blue-700' },
-            quiz: { bar: 'bg-purple-600', text: 'text-purple-700' },
-            exam: { bar: 'bg-rose-500', text: 'text-rose-700' },
-            project: { bar: 'bg-amber-500', text: 'text-amber-800' },
+            assignment: { bar: 'bg-sky-500', text: 'text-sky-600' },
+            quiz: { bar: 'bg-emerald-500', text: 'text-emerald-600' },
+            exam: { bar: 'bg-red-500', text: 'text-red-600' },
+            project: { bar: 'bg-yellow-500', text: 'text-yellow-600' },
           };
           const colors = colorMap[cat.key] || { bar: 'bg-blue-600', text: 'text-blue-700' };
 
